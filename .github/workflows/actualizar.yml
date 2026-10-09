@@ -1,0 +1,55 @@
+name: Actualizar precios y publicar el sitio
+
+on:
+  schedule:
+    - cron: "0 9 * * *"   # todos los días a las 6:00 hora de Argentina
+  workflow_dispatch:       # permite correrlo a mano desde la pestaña Actions
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Buscar precios en las tiendas
+        env:
+          ML_CLIENT_ID: ${{ secrets.ML_CLIENT_ID }}
+          ML_CLIENT_SECRET: ${{ secrets.ML_CLIENT_SECRET }}
+        run: python scraper.py
+
+      - name: Guardar el historial de precios
+        run: |
+          git config user.name "actualizador"
+          git config user.email "actualizador@users.noreply.github.com"
+          git add datos.json precios.db
+          git diff --staged --quiet || git commit -m "Actualizar precios"
+          git push
+
+      - name: Armar el sitio
+        run: |
+          mkdir _site
+          cp index.html datos.json _site/
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  publicar:
+    needs: actualizar
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.despliegue.outputs.page_url }}
+    steps:
+      - id: despliegue
+        uses: actions/deploy-pages@v4
