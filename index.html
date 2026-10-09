@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Suple a kilo — comparador de suplementos en Argentina</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#eef1f6;--surf:#fff;--ink:#101828;--mut:#5b6577;--line:#d5dbe5;--acc:#1f4bff;--good:#0b8a5b;--goodbg:#ddf5ea;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1320;--surf:#161d2e;--ink:#edf1f8;--mut:#9aa6bc;--line:#28324a;--acc:#6c8cff;--good:#3dd6a0;--goodbg:#0f3a2e}}
+:root[data-theme="dark"]{--bg:#0e1320;--surf:#161d2e;--ink:#edf1f8;--mut:#9aa6bc;--line:#28324a;--acc:#6c8cff;--good:#3dd6a0;--goodbg:#0f3a2e}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 "IBM Plex Sans",system-ui,sans-serif}
+.wrap{max-width:1080px;margin:0 auto;padding:20px 16px 48px}
+header{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:28px}
+.brand{font:800 22px "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.02em}
+.tag{font-size:13px;color:var(--mut)}
+h1{font:800 clamp(30px,6vw,52px)/1.05 "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.03em;margin:0 0 8px;max-width:16ch}
+.sub{color:var(--mut);margin:0 0 20px;max-width:58ch}
+.search{display:flex;margin-bottom:14px}
+.search input{flex:1;min-width:0;font:500 18px "IBM Plex Sans",sans-serif;padding:16px 18px;border:2px solid var(--ink);border-radius:10px;background:var(--surf);color:var(--ink)}
+.search input::placeholder{color:var(--mut)}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.bar{display:flex;flex-wrap:wrap;gap:8px 24px;margin-bottom:20px}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button,.pop button{font:500 14px "IBM Plex Sans",sans-serif;padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--surf);color:var(--ink);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.layout{display:grid;grid-template-columns:1fr 220px;gap:28px;align-items:start}
+.count{font-size:14px;color:var(--mut);margin:0 0 8px}
+.list{background:var(--surf);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:16px}
+.row,.head{display:grid;grid-template-columns:30px 1fr 78px 118px 150px;gap:12px;align-items:start;padding:14px 16px}
+.head{font-size:12px;color:var(--mut);border-bottom:1px solid var(--line);padding:10px 16px;align-items:center}
+.row+.row{border-top:1px solid var(--line)}
+.rk{font:800 18px "Bricolage Grotesque",sans-serif;color:var(--mut)}
+.nm{font-weight:600;line-height:1.3}
+.st{font-size:13px;color:var(--mut)}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.ppk{font:800 18px "Bricolage Grotesque",sans-serif}
+.q{display:flex;align-items:center;gap:8px;margin-top:6px;font-size:13px;color:var(--mut)}
+.q i{display:block;width:52px;height:6px;border-radius:3px;background:var(--line);overflow:hidden}
+.q i b{display:block;height:100%;background:var(--acc)}
+.badge{display:inline-block;margin-left:6px;font-size:12px;font-weight:600;padding:2px 8px;border-radius:6px;background:var(--goodbg);color:var(--good);vertical-align:1px}
+.save{display:inline-block;margin-top:4px;font-size:12px;font-weight:600;padding:2px 8px;border-radius:6px;background:var(--goodbg);color:var(--good)}
+.more{font-size:13px;color:var(--mut);margin-top:6px}
+a{color:var(--acc)}
+.empty{padding:32px 20px;color:var(--mut)}
+aside h2{font:800 16px "Bricolage Grotesque",sans-serif;margin:0 0 10px}
+.pop{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+.note{font-size:13px;color:var(--mut);border-left:3px solid var(--line);padding-left:12px}
+@media (max-width:820px){
+.layout{grid-template-columns:1fr}
+aside{order:-1}.pop{flex-direction:row;flex-wrap:wrap}
+.head{display:none}
+.row{grid-template-columns:28px 1fr auto;row-gap:8px}
+.sz{display:none}
+.ppkc{grid-column:3;grid-row:1}
+.bst{grid-column:2/4;text-align:left}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><span class="brand">Suple a kilo</span><span class="tag">Precios de Argentina, ordenados por kilo o por cápsula</span></header>
+
+<h1>Cuánto cuesta de verdad tu suplemento</h1>
+<p class="sub">Escribí un producto o una marca y mirá qué tienda lo vende más barato, cuánto ahorrás y cuánta calidad te da por ese precio.</p>
+
+<div class="search"><input id="q" type="search" placeholder="Probá: creatina, whey, citrato de magnesio, omega 3…" aria-label="Buscar suplemento" autocomplete="off"></div>
+
+<div class="bar">
+<div class="seg" id="cats" role="group" aria-label="Categoría"></div>
+<div class="seg" id="sorts" role="group" aria-label="Ordenar por"></div>
+</div>
+
+<div class="layout">
+<main>
+<p class="count" id="count" aria-live="polite"></p>
+<div id="list"></div>
+<p class="note" id="meta"></p>
+</main>
+<aside>
+<h2>Más buscados</h2>
+<div class="pop" id="pop"></div>
+</aside>
+</div>
+</div>
+
+<script>
+// Datos de ejemplo con el mismo formato que genera scraper.py (datos.json).
+// [marca, producto, categoría, variante, cantidad, unidad (g|u), calidad, [[tienda, precio], ...]]
+const SAMPLE=[
+["Star Nutrition","Creatina monohidrato","Creatina","monohidrato",300,"g",82,[["Disfit",28176],["Mercado Libre",29800],["Nutrishop (Mercado Libre)",36500]]],
+["Star Nutrition","Creatina monohidrato","Creatina","monohidrato",1000,"g",82,[["Disfit",67070],["Mercado Libre",64900]]],
+["ENA","Creatina micronizada","Creatina","monohidrato",300,"g",88,[["ENA Sport",31158],["Disfit",31158],["Mercado Libre",33500]]],
+["One Fit","Creatina monohidrato","Creatina","monohidrato",200,"g",80,[["Nutrishop (Mercado Libre)",14470],["Mercado Libre",15900]]],
+["Star Nutrition","Whey protein","Proteína","whey",910,"g",76,[["Mercado Libre",39800],["Disfit",41900]]],
+["ENA","Truemade Whey Protein","Proteína","whey",910,"g",90,[["ENA Sport",52700],["Mercado Libre",54800],["Disfit",55900]]],
+["One Fit","Classic Whey Protein","Proteína","whey",910,"g",78,[["Mercado Libre",49900],["Nutrishop (Mercado Libre)",51786]]],
+["Natuliv","Citrato de magnesio","Magnesio","citrato",60,"u",74,[["Mercado Libre",14500],["Disfit",16900]]],
+["ENA","Bisglicinato de magnesio","Magnesio","bisglicinato",90,"u",85,[["ENA Sport",24800],["Disfit",26500]]],
+["Gold Nutrition","Citrato de magnesio en polvo","Magnesio","citrato",300,"g",70,[["Mercado Libre",17200],["Disfit",18900]]],
+["Star Nutrition","Omega 3 EPA y DHA","Omega 3","",90,"u",80,[["Mercado Libre",17300],["Disfit",18400],["Nutrishop (Mercado Libre)",20100]]],
+["ENA","Omega 3 Ultra","Omega 3","",120,"u",86,[["ENA Sport",29900],["Mercado Libre",31200]]],
+["Gold Nutrition","Vitamina D3 + K2","Vitaminas","D3 + K2",60,"u",78,[["Mercado Libre",14800],["Disfit",15900]]],
+["Nucleo Fit","Colágeno hidrolizado","Colágeno","hidrolizado",300,"g",72,[["Mercado Libre",21900],["Disfit",23500]]],
+["ENA","Pre War","Pre-entreno","",300,"g",84,[["ENA Sport",31500],["Disfit",33900]]],
+["Star Nutrition","BCAA 2:1:1","Aminoácidos","bcaa",300,"g",68,[["Mercado Libre",17900],["Disfit",18900]]]
+].map(([marca,name,cat,tipo,cant,unidad,q,of])=>({marca,name,cat,tipo,cant,unidad,q,ofertas:of.map(([store,price])=>({store,price,url:""}))}));
+
+let DATA=SAMPLE;
+let META="Estos son datos de ejemplo para ver cómo funciona el sitio. Los precios reales los carga el scraper en datos.json. El puntaje de calidad es ficticio.";
+const ORDEN=["Proteína","Creatina","Magnesio","Omega 3","Vitaminas","Colágeno","Pre-entreno","Aminoácidos"];
+const SORTS={value:["Mejor precio-calidad",p=>-(p.q/p.unit),"Mejor relación"],cheap:["Más barato",p=>p.unit,"Más barato"],
+  quality:["Mayor calidad",p=>-p.q,"Mayor calidad"],ahorro:["Mayor ahorro entre tiendas",p=>-p.ahorro,"Mayor ahorro"]};
+const POP=["creatina","whey","citrato de magnesio","omega 3","vitamina d3"];
+const S={q:"",cat:"Todo",sort:null};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const money=n=>new Intl.NumberFormat("es-AR",{style:"currency",currency:"ARS",maximumFractionDigits:0}).format(n);
+const norm=s=>String(s).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+const size=p=>p.unidad==="u"?p.cant+" cáps.":(p.cant>=1000?(p.cant/1000).toString().replace(".",",")+" kg":p.cant+" g");
+
+function enrich(p){
+  const of=[...p.ofertas].sort((a,b)=>a.price-b.price), best=of[0], worst=of[of.length-1];
+  return {...p,of,best,unit:best.price/p.cant*(p.unidad==="g"?1000:1),
+    ahorro:of.length>1?Math.round((worst.price-best.price)/worst.price*100):0};
+}
+function seg(el,items,key){
+  el.innerHTML="";
+  items.forEach(([v,l])=>{const b=document.createElement("button");b.textContent=l;
+    b.setAttribute("aria-pressed",S[key]===v);b.onclick=()=>{S[key]=v;render()};el.appendChild(b)});
+}
+function fila(p,i,badge){
+  const url=/^https?:\/\//.test(p.best.url||"")?`<a href="${esc(p.best.url)}" target="_blank" rel="noopener">${esc(p.best.store)}</a>`:esc(p.best.store);
+  const otras=p.of.slice(1).map(o=>esc(o.store)+" "+money(o.price)).join(" · ");
+  return `<div class="row"><span class="rk">${i+1}</span>
+  <div><div class="st">${esc(p.marca)}${p.tipo?" · "+esc(p.tipo):""}</div>
+  <div class="nm">${esc(p.name)}${i===0?`<span class="badge">${badge}</span>`:""}</div>
+  ${p.q?`<div class="q"><i><b style="width:${+p.q}%"></b></i>Calidad ${+p.q}</div>`:""}
+  ${otras?`<div class="more">También en: ${otras}</div>`:""}</div>
+  <div class="num sz">${size(p)}</div>
+  <div class="num ppkc"><div class="ppk">${money(p.unit)}</div><div class="st">${money(p.best.price)} total</div></div>
+  <div class="num bst"><div class="nm">${url}</div>${p.ahorro>0?`<span class="save">Ahorrás ${p.ahorro}%</span>`:""}</div></div>`;
+}
+function render(){
+  const todos=DATA.map(enrich), hayQ=todos.some(p=>p.q);
+  const cats=["Todo",...ORDEN.filter(c=>todos.some(p=>p.cat===c)),...[...new Set(todos.map(p=>p.cat))].filter(c=>!ORDEN.includes(c))];
+  const keys=["cheap","ahorro",...(hayQ?["value","quality"]:[])].sort((a,b)=>"value,cheap,quality,ahorro".indexOf(a)-"value,cheap,quality,ahorro".indexOf(b));
+  if(!keys.includes(S.sort))S.sort=hayQ?"value":"cheap";
+  seg($("cats"),cats.map(c=>[c,c]),"cat");seg($("sorts"),keys.map(k=>[k,SORTS[k][0]]),"sort");
+  const t=norm(S.q).split(/\s+/).filter(Boolean);
+  const r=todos.filter(p=>(S.cat==="Todo"||p.cat===S.cat)&&t.every(w=>norm([p.name,p.marca,p.cat,p.tipo,...p.of.map(o=>o.store)].join(" ")).includes(w)));
+  $("count").textContent=r.length?r.length+(r.length===1?" producto":" productos"):"";
+  $("meta").textContent=META;
+  const L=$("list");
+  if(!r.length){L.innerHTML='<div class="list"><div class="empty">No encontramos “'+esc(S.q)+'”. Probá con creatina, whey o magnesio.</div></div>';return}
+  const [,key,badge]=SORTS[S.sort];
+  L.innerHTML=[["g","Precio por kilo"],["u","Precio por cápsula"]].map(([u,lab])=>{
+    const g=r.filter(p=>p.unidad===u).sort((a,b)=>key(a)-key(b));
+    return g.length?`<div class="list"><div class="head"><span></span><span>Producto y otras tiendas</span><span class="num">Tamaño</span><span class="num">${lab}</span><span class="num">Mejor oferta</span></div>${g.map((p,i)=>fila(p,i,badge)).join("")}</div>`:"";
+  }).join("");
+}
+$("q").addEventListener("input",e=>{S.q=e.target.value;render()});
+POP.forEach(w=>{const b=document.createElement("button");b.textContent=w;
+  b.onclick=()=>{S.q=w;S.cat="Todo";$("q").value=w;render()};$("pop").appendChild(b)});
+render();
+// Si al lado de esta página hay un datos.json (lo genera scraper.py), se usa en lugar del ejemplo.
+fetch("datos.json",{cache:"no-store"}).then(r=>r.ok?r.json():Promise.reject()).then(d=>{
+  if(d&&Array.isArray(d.productos)&&d.productos.length){
+    DATA=d.productos;
+    META="Precios actualizados el "+new Date(d.actualizado).toLocaleDateString("es-AR")+". Calidad: próximamente.";
+    render();
+  }
+}).catch(()=>{});
+</script>
+</body>
+</html>
