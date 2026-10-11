@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-10-10T09:04:41+00:00",
+ "actualizado": "2026-10-11T09:05:08+00:00",
  "productos": [
   {
    "marca": "BSN",
@@ -141,8 +141,8 @@
     },
     {
      "store": "Disfit",
-     "price": 38247.0,
-     "url": "https://www.disfit.com.ar/productos/citrato-de-magnesio-en-polvo-ena/"
+     "price": 38246.0,
+     "url": "https://www.disfit.com.ar/productos/bcaa-mtor-270-gr-star-nutrition-1l6hp/"
     }
    ]
   },
@@ -317,7 +317,7 @@
     {
      "store": "Disfit",
      "price": 80550.0,
-     "url": "https://www.disfit.com.ar/productos/100-whey-gold-standard-optimum-nutrition-2-lb/"
+     "url": "https://www.disfit.com.ar/productos/amino-energy-585-grs/"
     }
    ]
   },
@@ -332,7 +332,7 @@
     {
      "store": "Disfit",
      "price": 136852.0,
-     "url": "https://www.disfit.com.ar/productos/100-whey-gold-standard-optimum-nutrition-2-lb/"
+     "url": "https://www.disfit.com.ar/productos/amino-energy-585-grs/"
     }
    ]
   },
@@ -362,7 +362,7 @@
     {
      "store": "Disfit",
      "price": 75757.0,
-     "url": "https://www.disfit.com.ar/productos/100-whey-gold-standard-optimum-nutrition-10-lb/"
+     "url": "https://www.disfit.com.ar/productos/100-whey-gold-standard-optimum-nutrition-2-lb/"
     }
    ]
   },
@@ -422,7 +422,7 @@
     {
      "store": "Disfit",
      "price": 31407.0,
-     "url": "https://www.disfit.com.ar/productos/fit-whey-protein-2-lbs/"
+     "url": "https://www.disfit.com.ar/productos/pre-entreno-killer-5-0-300-gr-generation-fit/"
     }
    ]
   },
@@ -542,7 +542,7 @@
     {
      "store": "Disfit",
      "price": 37908.0,
-     "url": "https://www.disfit.com.ar/productos/glutamina-micronizada-150g-ena/"
+     "url": "https://www.disfit.com.ar/productos/amino-4500-x-150-comprimidos-ena/"
     }
    ]
   },
@@ -632,7 +632,7 @@
     {
      "store": "Disfit",
      "price": 27917.0,
-     "url": "https://www.disfit.com.ar/productos/proteina-de-huevo-hidrolizada-750-grs/"
+     "url": "https://www.disfit.com.ar/productos/aislado-de-proteina-de-soja-granger-750-g/"
     }
    ]
   },
@@ -662,7 +662,7 @@
     {
      "store": "Disfit",
      "price": 23662.0,
-     "url": "https://www.disfit.com.ar/productos/pre-work-ripped-60-comprimidos-nucleo-fit/"
+     "url": "https://www.disfit.com.ar/productos/whey-protein-hoch-sport-3-kg/"
     }
    ]
   },
@@ -722,7 +722,7 @@
     {
      "store": "Disfit",
      "price": 21620.0,
-     "url": "https://www.disfit.com.ar/productos/energy-whey-creatina-arginina-2-lb-one-fit-nutrition/"
+     "url": "https://www.disfit.com.ar/productos/classic-whey-protein-2-lb-one-fit-nutrition/"
     }
    ]
   },
@@ -737,7 +737,7 @@
     {
      "store": "Disfit",
      "price": 25125.0,
-     "url": "https://www.disfit.com.ar/productos/killer-strike-con-creatina-cherry-twist-300gr/"
+     "url": "https://www.disfit.com.ar/productos/fit-whey-protein-2-lbs/"
     }
    ]
   },
@@ -752,7 +752,7 @@
     {
      "store": "Disfit",
      "price": 44217.0,
-     "url": "https://www.disfit.com.ar/productos/granola-proteica-con-whey-protein-mole-b2odj/"
+     "url": "https://www.disfit.com.ar/productos/pancake-proteico-con-whey-protein-mole-a0y14/"
     }
    ]
   },
@@ -811,8 +811,23 @@
    "ofertas": [
     {
      "store": "Disfit",
-     "price": 26835.0,
+     "price": 29598.0,
      "url": "https://www.disfit.com.ar/productos/creatina-creapure-neutra-300-g-x-body-evolution/"
+    }
+   ]
+  },
+  {
+   "marca": "226ERS",
+   "cat": "Creatina",
+   "tipo": "creapure",
+   "cant": 300,
+   "unidad": "g",
+   "name": "Creatina Con Sello Creapure 300g - 226ERS",
+   "ofertas": [
+    {
+     "store": "Disfit",
+     "price": 110882.0,
+     "url": "https://www.disfit.com.ar/productos/pre-workout-226ers1/"
     }
    ]
   },
@@ -827,7 +842,7 @@
     {
      "store": "Disfit",
      "price": 13272.0,
-     "url": "https://www.disfit.com.ar/productos/bcaa-811-powder-280-g-body-advance/"
+     "url": "https://www.disfit.com.ar/productos/whey-protein-body-advance-3-kg/"
     }
    ]
   },
@@ -987,7 +1002,7 @@
     {
      "store": "Disfit",
      "price": 75058.0,
-     "url": "https://www.disfit.com.ar/productos/collagen-sport-integralmedica-450g/"
+     "url": "https://www.disfit.com.ar/productos/bcaa-energy-frutilla-y-limon-240-g-integralmedica/"
     }
    ]
   },
@@ -1062,7 +1077,7 @@
     {
      "store": "Disfit",
      "price": 22940.0,
-     "url": "https://www.disfit.com.ar/productos/whey-protein-nutremax-1-kg/"
+     "url": "https://www.disfit.com.ar/productos/amino-6400-nutremax-200-comprimidos/"
     }
    ]
   },
@@ -1077,7 +1092,7 @@
     {
      "store": "Disfit",
      "price": 18953.0,
-     "url": "https://www.disfit.com.ar/productos/classic-whey-protein-2-lb-one-fit-nutrition/"
+     "url": "https://www.disfit.com.ar/productos/energy-whey-creatina-arginina-2-lb-one-fit-nutrition/"
     }
    ]
   },
@@ -1100,14 +1115,14 @@
    "marca": "Sin marca",
    "cat": "Creatina",
    "tipo": "monohidrato",
-   "cant": 450,
+   "cant": 600,
    "unidad": "g",
-   "name": "MOLE Creatina Monohidrato 450 gr",
+   "name": "Creatina 100% Monohidratada 600 gr - SANTA MADRE",
    "ofertas": [
     {
      "store": "Disfit",
-     "price": 38572.0,
-     "url": "https://www.disfit.com.ar/productos/granola-proteica-con-whey-protein-mole-b2odj/"
+     "price": 120775.0,
+     "url": "https://www.disfit.com.ar/productos/creatina-100-monohidratada-300-gr-santa-madre-o6dgl/"
     }
    ]
   },
@@ -1123,6 +1138,21 @@
      "store": "Disfit",
      "price": 30000.0,
      "url": "https://www.disfit.com.ar/productos/bcaa-2000-x-120-caps-star-nutrition/"
+    }
+   ]
+  },
+  {
+   "marca": "xBody Evolution",
+   "cat": "Creatina",
+   "tipo": "monohidrato",
+   "cant": 300,
+   "unidad": "g",
+   "name": "Creatina Pura Micronizada Doypack 300 gr - xBody Evolution",
+   "ofertas": [
+    {
+     "store": "Disfit",
+     "price": 27407.0,
+     "url": "https://www.disfit.com.ar/productos/creatina-creapure-neutra-300-g-x-body-evolution/"
     }
    ]
   },
@@ -1197,7 +1227,7 @@
     {
      "store": "Disfit",
      "price": 58006.0,
-     "url": "https://www.disfit.com.ar/productos/platinum-hydro-whey-optimum-nutrition-800-g/"
+     "url": "https://www.disfit.com.ar/productos/100-whey-gold-standard-optimum-nutrition-2-lb/"
     }
    ]
   },
@@ -1207,7 +1237,7 @@
    "tipo": "bisglicinato",
    "cant": 60,
    "unidad": "u",
-   "name": "Glicinato de Magnesio x 60 caps - PURE NUTRITION",
+   "name": "Bisglicinato de Magnesio x60 Caps - PURE NUTRITION",
    "ofertas": [
     {
      "store": "Disfit",
@@ -1228,21 +1258,6 @@
      "store": "Disfit",
      "price": 26250.0,
      "url": "https://www.disfit.com.ar/productos/citrato-de-magnesio-500g-star-nutrition/"
-    }
-   ]
-  },
-  {
-   "marca": "Sin marca",
-   "cat": "Magnesio",
-   "tipo": "",
-   "cant": 60,
-   "unidad": "u",
-   "name": "Magnesio con Vitaminas K, D y Zinc 60 Caps – GU Roctane",
-   "ofertas": [
-    {
-     "store": "Disfit",
-     "price": 103330.0,
-     "url": "https://www.disfit.com.ar/productos/protein-recovery-roctane-drink-15-serv/"
     }
    ]
   },
@@ -1457,7 +1472,7 @@
     {
      "store": "Disfit",
      "price": 42635.0,
-     "url": "https://www.disfit.com.ar/productos/bcaa-energy-frutilla-y-limon-240-g-integralmedica/"
+     "url": "https://www.disfit.com.ar/productos/collagen-sport-integralmedica-450g/"
     }
    ]
   },
@@ -1547,7 +1562,7 @@
     {
      "store": "Disfit",
      "price": 39602.0,
-     "url": "https://www.disfit.com.ar/productos/bcaa-811-powder-280-g-body-advance/"
+     "url": "https://www.disfit.com.ar/productos/vitamina-c-240-g-body-advance/"
     }
    ]
   },
@@ -1707,7 +1722,7 @@
     {
      "store": "Disfit",
      "price": 66811.0,
-     "url": "https://www.disfit.com.ar/productos/amino-4500-x-150-comprimidos-ena/"
+     "url": "https://www.disfit.com.ar/productos/glutamina-micronizada-150g-ena/"
     }
    ]
   },
@@ -1767,7 +1782,7 @@
     {
      "store": "Disfit",
      "price": 164405.0,
-     "url": "https://www.disfit.com.ar/productos/whey-protein-hoch-sport-3-kg/"
+     "url": "https://www.disfit.com.ar/productos/bcaa-2200-100caps/"
     }
    ]
   },
@@ -1797,22 +1812,7 @@
     {
      "store": "Disfit",
      "price": 328207.0,
-     "url": "https://www.disfit.com.ar/productos/whey-protein-hoch-sport-3-kg/"
-    }
-   ]
-  },
-  {
-   "marca": "Hoch Sport",
-   "cat": "Proteína",
-   "tipo": "whey",
-   "cant": 3000,
-   "unidad": "g",
-   "name": "Proteína Serie profesional 3 kg - Hoch Sport",
-   "ofertas": [
-    {
-     "store": "Disfit",
-     "price": 213122.0,
-     "url": "https://www.disfit.com.ar/productos/bcaa-best-hoch-sport-240-g/"
+     "url": "https://www.disfit.com.ar/productos/bcaa-2200-100caps/"
     }
    ]
   },
@@ -1887,7 +1887,7 @@
     {
      "store": "Disfit",
      "price": 109500.0,
-     "url": "https://www.disfit.com.ar/productos/amino-energy-585g-optimum-nutrition-1t7e0/"
+     "url": "https://www.disfit.com.ar/productos/bcaa-mtor-270-gr-star-nutrition-1l6hp/"
     }
    ]
   },
@@ -1962,7 +1962,7 @@
     {
      "store": "Disfit",
      "price": 16425.0,
-     "url": "https://www.disfit.com.ar/productos/pancake-proteico-con-whey-protein-mole-a0y14/"
+     "url": "https://www.disfit.com.ar/productos/mole-whey-protein-907-gr-n4zlw/"
     }
    ]
   },
@@ -2007,7 +2007,7 @@
     {
      "store": "Disfit",
      "price": 58960.0,
-     "url": "https://www.disfit.com.ar/productos/pre-entreno-killer-5-0-300-gr-generation-fit/"
+     "url": "https://www.disfit.com.ar/productos/fit-whey-protein-2-lbs/"
     }
    ]
   },
@@ -2029,21 +2029,6 @@
   {
    "marca": "Star Nutrition",
    "cat": "Proteína",
-   "tipo": "aislada",
-   "cant": 910,
-   "unidad": "g",
-   "name": "Proteína Platinum Whey Isolada 2 LBS - STAR NUTRITION | PRE VENTA: 19/10",
-   "ofertas": [
-    {
-     "store": "Disfit",
-     "price": 152277.0,
-     "url": "https://www.disfit.com.ar/productos/bcaa-2000-x-120-caps-star-nutrition/"
-    }
-   ]
-  },
-  {
-   "marca": "Star Nutrition",
-   "cat": "Proteína",
    "tipo": "whey",
    "cant": 910,
    "unidad": "g",
@@ -2052,7 +2037,22 @@
     {
      "store": "Disfit",
      "price": 105740.0,
-     "url": "https://www.disfit.com.ar/productos/l-glutamina-300-g-star-nutrition/"
+     "url": "https://www.disfit.com.ar/productos/bcaa-2000-x-120-caps-star-nutrition/"
+    }
+   ]
+  },
+  {
+   "marca": "Star Nutrition",
+   "cat": "Proteína",
+   "tipo": "aislada",
+   "cant": 910,
+   "unidad": "g",
+   "name": "Proteína Platinum Whey Isolada 2 LBS - STAR NUTRITION | PRE VENTA: 14/10",
+   "ofertas": [
+    {
+     "store": "Disfit",
+     "price": 152277.0,
+     "url": "https://www.disfit.com.ar/productos/proteina-3kg-1-kg-de-creatina/"
     }
    ]
   },
@@ -2157,7 +2157,7 @@
     {
      "store": "Disfit",
      "price": 19854.0,
-     "url": "https://www.disfit.com.ar/productos/omega3max-innovalnaturals/"
+     "url": "https://www.disfit.com.ar/productos/omega3-innovanaturals/"
     }
    ]
   },
@@ -2202,21 +2202,6 @@
     {
      "store": "Disfit",
      "price": 18325.0,
-     "url": "https://www.disfit.com.ar/productos/classic-whey-protein-2-lb-one-fit-nutrition/"
-    }
-   ]
-  },
-  {
-   "marca": "One Fit",
-   "cat": "Vitaminas",
-   "tipo": "multivitamínico",
-   "cant": 60,
-   "unidad": "u",
-   "name": "Multivitaminico x60 Caps - One Fit Nutrition",
-   "ofertas": [
-    {
-     "store": "Disfit",
-     "price": 18220.0,
      "url": "https://www.disfit.com.ar/productos/energy-whey-creatina-arginina-2-lb-one-fit-nutrition/"
     }
    ]
