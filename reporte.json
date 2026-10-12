@@ -1,21 +1,21 @@
 {
- "fecha": "2026-10-12T09:35:07+00:00",
- "segundos": 1458,
- "productos": 324,
- "comparables": 69,
+ "fecha": "2026-10-12T21:38:10+00:00",
+ "segundos": 1349,
+ "productos": 514,
+ "comparables": 94,
  "tiendas": {
   "Disfit": {
    "estado": "conservada",
-   "ofertas": 155,
+   "ofertas": 158,
    "paginas": 431,
    "productos_leidos": 431,
    "omitidos": {
-    "no_es_suplemento_o_sin_tamano": 96
+    "no_es_suplemento_o_sin_tamano": 82
    },
    "errores": [],
    "tipo": "sitemap",
    "errores_total": 0,
-   "nota": "leyó 155 ofertas y antes tenía 3876: se conserva la lectura anterior",
+   "nota": "leyó 158 ofertas y antes tenía 3876: se conserva la lectura anterior",
    "enlaces_verificados": {
     "probados": 2,
     "correctos": 2,
@@ -43,11 +43,12 @@
   },
   "Recoleta al Fallo": {
    "estado": "ok",
-   "ofertas": 35,
-   "paginas": 118,
+   "ofertas": 36,
+   "paginas": 24,
    "productos_leidos": 118,
    "omitidos": {
-    "no_es_suplemento_o_sin_tamano": 36
+    "sin_cambios_304": 94,
+    "no_es_suplemento_o_sin_tamano": 8
    },
    "errores": [],
    "tipo": "sitemap",
@@ -61,11 +62,12 @@
   "Suplementate": {
    "estado": "ok",
    "ofertas": 183,
-   "paginas": 264,
+   "paginas": 205,
    "productos_leidos": 264,
    "omitidos": {
-    "no_es_suplemento_o_sin_tamano": 19,
-    "sin_stock": 34
+    "no_es_suplemento_o_sin_tamano": 16,
+    "sin_stock": 20,
+    "sin_cambios_304": 59
    },
    "errores": [],
    "tipo": "sitemap",
@@ -79,11 +81,12 @@
   "Nutrición Muscular": {
    "estado": "ok",
    "ofertas": 84,
-   "paginas": 205,
+   "paginas": 136,
    "productos_leidos": 205,
    "omitidos": {
-    "sin_stock": 18,
-    "no_es_suplemento_o_sin_tamano": 66
+    "sin_stock": 12,
+    "sin_cambios_304": 69,
+    "no_es_suplemento_o_sin_tamano": 47
    },
    "errores": [],
    "tipo": "sitemap",
@@ -141,6 +144,148 @@
    "enlaces_verificados": {
     "probados": 2,
     "correctos": 2,
+    "dudosos": 0
+   }
+  },
+  "ADN Nutrition": {
+   "estado": "ok",
+   "ofertas": 83,
+   "paginas": 498,
+   "productos_leidos": 498,
+   "omitidos": {
+    "sin_stock": 173,
+    "no_es_suplemento_o_sin_tamano": 23
+   },
+   "errores": [
+    "https://www.adnnutrition.com.ar/productos/b-bcaa-8-0-360-grs-fruit-punch/: HTTP 404 en https://www.adnnutrition.com.ar/productos/b-bcaa-8-0-360-grs-fruit-punch/",
+    "https://www.adnnutrition.com.ar/productos/s-bcaa-8-0-360-grs-lemon-punch-i-seta-bcaa-extra-leucina-copia/: HTTP 404 en https://www.adnnutrition.com.ar/productos/s-bcaa-8-0-360-grs-lemon-punch-i-seta-bcaa-extra-leucina-co"
+   ],
+   "tipo": "sitemap",
+   "errores_total": 2,
+   "enlaces_verificados": {
+    "probados": 2,
+    "correctos": 1,
+    "dudosos": 1
+   }
+  },
+  "Farmacity": {
+   "estado": "ok",
+   "ofertas": 107,
+   "paginas": 23,
+   "productos_leidos": 929,
+   "omitidos": {
+    "no_es_suplemento_o_sin_tamano": 569,
+    "sin_stock": 197
+   },
+   "errores": [],
+   "tipo": "vtex",
+   "errores_total": 0,
+   "enlaces_verificados": {
+    "probados": 2,
+    "correctos": 2,
+    "dudosos": 0
+   }
+  },
+  "Farmacia Leloir": {
+   "estado": "ok",
+   "ofertas": 0,
+   "paginas": 0,
+   "productos_leidos": 0,
+   "omitidos": {},
+   "errores": [],
+   "tipo": "sitemap",
+   "errores_total": 0
+  },
+  "Entreno": {
+   "estado": "ok",
+   "ofertas": 152,
+   "paginas": 395,
+   "productos_leidos": 395,
+   "omitidos": {
+    "sin_stock": 76,
+    "no_es_suplemento_o_sin_tamano": 19
+   },
+   "errores": [],
+   "tipo": "sitemap",
+   "errores_total": 0,
+   "enlaces_verificados": {
+    "probados": 2,
+    "correctos": 2,
+    "dudosos": 0
+   }
+  },
+  "TR Fitness": {
+   "estado": "ok",
+   "ofertas": 71,
+   "paginas": 156,
+   "productos_leidos": 156,
+   "omitidos": {
+    "no_es_suplemento_o_sin_tamano": 19
+   },
+   "errores": [],
+   "tipo": "sitemap",
+   "errores_total": 0,
+   "enlaces_verificados": {
+    "probados": 2,
+    "correctos": 2,
+    "dudosos": 0
+   }
+  },
+  "3F Suplementos": {
+   "estado": "ok",
+   "ofertas": 15,
+   "paginas": 54,
+   "productos_leidos": 54,
+   "omitidos": {
+    "sin_stock": 14,
+    "no_es_suplemento_o_sin_tamano": 3
+   },
+   "errores": [],
+   "tipo": "sitemap",
+   "errores_total": 0,
+   "enlaces_verificados": {
+    "probados": 2,
+    "correctos": 2,
+    "dudosos": 0
+   }
+  },
+  "Megatone": {
+   "estado": "ok",
+   "ofertas": 0,
+   "paginas": 0,
+   "productos_leidos": 0,
+   "omitidos": {},
+   "errores": [
+    "sitemap https://www.megatone.net/sitemap.xml: HTTP 404 en https://www.megatone.net/sitemap.xml"
+   ],
+   "tipo": "sitemap",
+   "errores_total": 1
+  },
+  "Central Oeste": {
+   "estado": "ok",
+   "ofertas": 0,
+   "paginas": 463,
+   "productos_leidos": 463,
+   "omitidos": {},
+   "errores": [],
+   "tipo": "sitemap",
+   "errores_total": 0
+  },
+  "Decathlon": {
+   "estado": "ok",
+   "ofertas": 1,
+   "paginas": 17,
+   "productos_leidos": 4038,
+   "omitidos": {
+    "no_es_suplemento_o_sin_tamano": 8173,
+    "sin_stock": 7948
+   },
+   "errores": [],
+   "tipo": "shopify",
+   "errores_total": 0,
+   "enlaces_verificados": {
+    "probados": 1,
+    "correctos": 1,
     "dudosos": 0
    }
   },
