@@ -1,0 +1,170 @@
+{
+ "fecha": "2026-10-12T09:10:22+00:00",
+ "segundos": 1511,
+ "productos": 324,
+ "comparables": 69,
+ "tiendas": {
+  "Disfit": {
+   "estado": "conservada",
+   "ofertas": 155,
+   "paginas": 431,
+   "productos_leidos": 431,
+   "omitidos": {
+    "no_es_suplemento_o_sin_tamano": 96
+   },
+   "errores": [],
+   "tipo": "sitemap",
+   "errores_total": 0,
+   "nota": "leyó 155 ofertas y antes tenía 3876: se conserva la lectura anterior",
+   "enlaces_verificados": {
+    "probados": 2,
+    "correctos": 2,
+    "dudosos": 0
+   }
+  },
+  "ENA Sport": {
+   "estado": "conservada",
+   "ofertas": 54,
+   "paginas": 1,
+   "productos_leidos": 67,
+   "omitidos": {
+    "no_es_suplemento_o_sin_tamano": 123,
+    "sin_stock": 17
+   },
+   "errores": [],
+   "tipo": "shopify",
+   "errores_total": 0,
+   "nota": "leyó 54 ofertas y antes tenía 182: se conserva la lectura anterior",
+   "enlaces_verificados": {
+    "probados": 2,
+    "correctos": 2,
+    "dudosos": 0
+   }
+  },
+  "Recoleta al Fallo": {
+   "estado": "ok",
+   "ofertas": 35,
+   "paginas": 118,
+   "productos_leidos": 118,
+   "omitidos": {
+    "no_es_suplemento_o_sin_tamano": 36
+   },
+   "errores": [],
+   "tipo": "sitemap",
+   "errores_total": 0,
+   "enlaces_verificados": {
+    "probados": 2,
+    "correctos": 2,
+    "dudosos": 0
+   }
+  },
+  "Suplementate": {
+   "estado": "ok",
+   "ofertas": 183,
+   "paginas": 264,
+   "productos_leidos": 264,
+   "omitidos": {
+    "no_es_suplemento_o_sin_tamano": 19,
+    "sin_stock": 34
+   },
+   "errores": [],
+   "tipo": "sitemap",
+   "errores_total": 0,
+   "enlaces_verificados": {
+    "probados": 2,
+    "correctos": 2,
+    "dudosos": 0
+   }
+  },
+  "Nutrición Muscular": {
+   "estado": "ok",
+   "ofertas": 84,
+   "paginas": 205,
+   "productos_leidos": 205,
+   "omitidos": {
+    "sin_stock": 18,
+    "no_es_suplemento_o_sin_tamano": 66
+   },
+   "errores": [],
+   "tipo": "sitemap",
+   "errores_total": 0,
+   "enlaces_verificados": {
+    "probados": 2,
+    "correctos": 2,
+    "dudosos": 0
+   }
+  },
+  "DeMusculos": {
+   "estado": "ok",
+   "ofertas": 0,
+   "paginas": 0,
+   "productos_leidos": 0,
+   "omitidos": {},
+   "errores": [
+    "sitemap https://www.demusculos.com/sitemap.xml: HTTP 404 en https://www.demusculos.com/sitemap.xml"
+   ],
+   "tipo": "sitemap",
+   "errores_total": 1
+  },
+  "Morashop": {
+   "estado": "ok",
+   "ofertas": 0,
+   "paginas": 597,
+   "productos_leidos": 597,
+   "omitidos": {},
+   "errores": [],
+   "tipo": "sitemap",
+   "errores_total": 0
+  },
+  "Rosario Suplementos": {
+   "estado": "ok",
+   "ofertas": 0,
+   "paginas": 0,
+   "productos_leidos": 0,
+   "omitidos": {},
+   "errores": [],
+   "tipo": "sitemap",
+   "errores_total": 0
+  },
+  "Gentech": {
+   "estado": "ok",
+   "ofertas": 7,
+   "paginas": 114,
+   "productos_leidos": 114,
+   "omitidos": {
+    "no_es_suplemento_o_sin_tamano": 23,
+    "sin_stock": 2
+   },
+   "errores": [],
+   "tipo": "sitemap",
+   "errores_total": 0,
+   "enlaces_verificados": {
+    "probados": 2,
+    "correctos": 2,
+    "dudosos": 0
+   }
+  },
+  "Nutrishop": {
+   "estado": "ok",
+   "ofertas": 0,
+   "paginas": 0,
+   "productos_leidos": 0,
+   "omitidos": {},
+   "errores": [
+    "sitemap https://www.nutrishop.com.ar/sitemap.xml: <urlopen error [Errno -2] Name or service not known>"
+   ],
+   "tipo": "sitemap",
+   "errores_total": 1
+  },
+  "Mercado Libre": {
+   "estado": "error",
+   "ofertas": 0,
+   "paginas": 0,
+   "productos_leidos": 0,
+   "omitidos": {},
+   "errores": [],
+   "tipo": "mercadolibre",
+   "nota": "faltan credenciales: definí ML_CLIENT_ID y ML_CLIENT_SECRET (o ML_ACCESS_TOKEN)"
+  }
+ }
+}
