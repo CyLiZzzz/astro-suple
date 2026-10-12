@@ -8,7 +8,7 @@ on:
 jobs:
   actualizar:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 150
     permissions:
       contents: write
     steps:
@@ -22,20 +22,21 @@ jobs:
         env:
           ML_CLIENT_ID: ${{ secrets.ML_CLIENT_ID }}
           ML_CLIENT_SECRET: ${{ secrets.ML_CLIENT_SECRET }}
+          SCRAPER_CONTACTO: ${{ vars.SCRAPER_CONTACTO }}
         run: python scraper.py
 
       - name: Guardar el historial de precios
         run: |
           git config user.name "actualizador"
           git config user.email "actualizador@users.noreply.github.com"
-          git add datos.json precios.db
+          git add datos.json precios.db reporte.json
           git diff --staged --quiet || git commit -m "Actualizar precios"
           git push
 
       - name: Armar el sitio
         run: |
           mkdir _site
-          cp index.html datos.json _site/
+          cp index.html datos.json reporte.json _site/
 
       - uses: actions/upload-pages-artifact@v3
         with:
