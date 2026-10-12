@@ -5,6 +5,10 @@ on:
     - cron: "0 9 * * *"   # todos los días a las 6:00 hora de Argentina
   workflow_dispatch:       # permite correrlo a mano desde la pestaña Actions
 
+concurrency:
+  group: actualizar-precios
+  cancel-in-progress: false   # si ya hay una corrida en marcha, la nueva espera su turno
+
 jobs:
   actualizar:
     runs-on: ubuntu-latest
@@ -29,9 +33,23 @@ jobs:
         run: |
           git config user.name "actualizador"
           git config user.email "actualizador@users.noreply.github.com"
-          git add datos.json precios.db reporte.json
-          git diff --staged --quiet || git commit -m "Actualizar precios"
-          git push
+          mkdir -p /tmp/resultado
+          cp datos.json precios.db reporte.json /tmp/resultado/
+          for intento in 1 2 3 4 5; do
+            # Si alguien cambió algo en el repositorio mientras se leían los precios, se parte de la versión
+            # más nueva y se vuelve a poner encima solo lo que generó el scraper. Así no hay conflictos.
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/resultado/datos.json /tmp/resultado/precios.db /tmp/resultado/reporte.json .
+            git add datos.json precios.db reporte.json
+            git diff --staged --quiet && { echo "Sin cambios que guardar"; exit 0; }
+            git commit -m "Actualizar precios"
+            git push origin HEAD:main && exit 0
+            echo "El repositorio cambió mientras se leían los precios; reintentando ($intento/5)..."
+            sleep 5
+          done
+          echo "No se pudo guardar el resultado después de 5 intentos"
+          exit 1
 
       - name: Armar el sitio
         run: |
