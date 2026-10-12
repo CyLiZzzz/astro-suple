@@ -398,6 +398,44 @@ main#app { min-height: 80vh; }
   .skel-card .skel:first-child { width: 80px !important; height: 80px !important; }
   .gal { max-width: 420px; margin: 0 auto; }
 }
+
+/* --- FICHA SIMPLIFICADA: lo esencial arriba, el resto abajo --- */
+@media (min-width: 861px) { .pgrid { grid-template-columns: 380px 1fr; gap: 48px; } }
+.pi h1 { margin: 6px 0 22px; }
+.pi .optg { margin: 0 0 20px; }
+.pi .opts { margin-bottom: 0; }
+dl.mini { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 14px 28px; margin: 0 0 26px; padding: 18px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+dl.mini dt { font: 700 12px var(--fb); text-transform: uppercase; letter-spacing: 0.05em; color: var(--mut); }
+dl.mini dd { margin: 2px 0 0; font: 600 16px var(--fb); }
+.pi .buy { position: static; padding: 24px; box-shadow: var(--shadow); }
+.bb-price { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.bb-price b { font: 800 46px/1 var(--fb); color: var(--price); font-variant-numeric: tabular-nums; letter-spacing: -1px; }
+.bb-price .tg { margin: 0; }
+.bb-store { margin: 8px 0 18px; font-size: 16px; color: var(--mut); }
+.bb-store b { color: var(--ink); }
+.tt { font-size: 13px; font-weight: 400; color: var(--mut); margin-top: 2px; max-width: 52ch; line-height: 1.4; }
+.hint { display: block; margin-top: 10px; font-size: 13px; color: var(--mut); text-align: center; }
+.tt.hint { text-align: left; margin-top: 2px; }
+.alt { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; font-size: 14px; color: var(--mut); }
+.alt a, .alt span:not(:first-child) { color: var(--ink); font-weight: 600; text-decoration: none; }
+.alt a:hover { color: var(--brand); }
+details.mo { background: var(--surf); border: 1px solid var(--line); border-radius: var(--radius-sm); margin-bottom: 10px; }
+details.mo > summary { cursor: pointer; padding: 16px 20px; font: 700 16px var(--fb); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+details.mo > summary::-webkit-details-marker { display: none; }
+details.mo > summary::after { content: "+"; color: var(--brand); font-size: 22px; line-height: 1; }
+details.mo[open] > summary::after { content: "–"; }
+details.mo > .mob { padding: 0 20px 20px; }
+details.mo .calc { margin: 0; padding: 0; border: 0; box-shadow: none; background: transparent; }
+details.mo .know { margin: 0 0 16px; }
+details.mo h3.sub { margin: 16px 0 6px; font: 800 15px var(--fb); }
+details.mo h3.sub:first-child { margin-top: 0; }
+details.mo .optg { margin: 0 0 16px; }
+.more h2 { margin-bottom: 16px; }
+/* Listado: menos ruido */
+.it .ir .pst, .pcard .pst { font-size: 13px; color: var(--mut); }
+.pcard .off-badge { font-size: 12px; }
+.bc .share { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; background: none; border: 1px solid var(--line); border-radius: 100px; padding: 6px 14px; color: var(--mut); font: 600 13px var(--fb); cursor: pointer; }
+.bc .share:hover { color: var(--brand); border-color: var(--brand); }
 </style>
 </head>
 <body>
@@ -469,7 +507,7 @@ const SAMPLE=[
 ["Gentech","Iron Bar proteica","Barras y snacks","",20,"u",72,[["Gentech",52000],["Mercado Libre",58500]]]
 ].map(([marca,name,cat,tipo,cant,unidad,q,of,desc,sabores,info,hist])=>({marca,name,cat,tipo,cant,unidad,q,desc:desc||"",sabores:sabores||[],info:info||{},hist:hist||[],imagen:"",ofertas:of.map(([store,price,efectivo,lista])=>({store,price,url:"",efectivo,lista}))}));
 
-let DATA=SAMPLE,FLAT=[],ALLF=[],FAMS=[],TOPF=[],CATS=["Todo"],VIEW="",SUG=[],SI=-1,SAMPLED=true,LOADING=true,ANIM=true;
+let DATA=SAMPLE,FLAT=[],ALLF=[],FKEY=new Map(),FAMS=[],TOPF=[],CATS=["Todo"],VIEW="",SUG=[],SI=-1,SAMPLED=true,LOADING=true,ANIM=true;
 let META="Datos de ejemplo: los precios reales los carga el scraper en datos.json.";
 const ORDEN=["Proteína","Creatina","Ganadores de peso","Magnesio","Omega 3","Vitaminas","Colágeno","Pre-entreno","Aminoácidos","Quemadores","Hidratación","Barras y snacks"];
 const GOALS=[["Ganar músculo","",["Proteína","Aminoácidos","Creatina","Ganadores de peso"]],["Rendir más","",["Creatina","Pre-entreno","Magnesio","Hidratación"]],["Recuperarme","",["Aminoácidos","Colágeno","Magnesio","Omega 3"]],["Sentirme mejor","",["Vitaminas","Omega 3","Magnesio","Colágeno"]],["Cuidar las articulaciones","",["Colágeno","Omega 3"]],["Tener más energía","",["Pre-entreno","Vitaminas","Barras y snacks"]],["Quemar grasa","",["Quemadores"]],["Hidratarme","",["Hidratación"]]];
@@ -498,7 +536,7 @@ const iconSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stro
 const thumb=(f,c="")=>`<div class="pim ${c}${web(f.imagen)?" has-img":""}" style="--c:${catColor(f.cat)}">${iconSVG}${web(f.imagen)?`<img src="${esc(f.imagen)}" alt="${esc(f.name)}" width="240" height="240" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="var p=this.parentNode;this.remove();p.classList.remove('has-img')">`:""}</div>`;
 const href=f=>"#/p/"+encodeURIComponent(f.k);
 
-function prep(){FLAT=DATA.map(p=>({...p,sabores:p.sabores||[],info:p.info||{},hist:p.hist||[],of:p.ofertas.map(o=>S.cash&&o.efectivo?{...o,lista:o.price,price:o.efectivo,cash:true}:o).sort((a,b)=>a.price-b.price)}))}
+function prep(){FLAT=DATA.map((p,i)=>({...p,_i:i,sabores:p.sabores||[],info:p.info||{},hist:p.hist||[],of:p.ofertas.map(o=>S.cash&&o.efectivo?{...o,lista:o.price,price:o.efectivo,cash:true}:o).sort((a,b)=>a.price-b.price)}))}
 function visibles(){
   const t=norm(S.q).split(/\s+/).filter(Boolean),out=[];
   for(const p of FLAT){
@@ -516,9 +554,16 @@ function visibles(){
   }
   return out;
 }
-function familias(v){
+function familias(v,fijas){
+  // fijas: clave de ficha de cada producto, calculada una sola vez sobre el catálogo completo; así el listado y la ficha siempre coinciden
   const m=new Map();
-  v.forEach(p=>{const k=[p.marca,p.cat,p.tipo,p.linea||""].join("|");if(!m.has(k))m.set(k,{k,marca:p.marca,cat:p.cat,tipo:p.tipo,pres:[]});m.get(k).pres.push(p)});
+  v.forEach(p=>{
+    let k=fijas&&fijas.get(p._i);
+    if(!k){const base=[p.marca,p.cat,p.tipo,p.linea||""].join("|");k=base;let n=1;
+      while(m.has(k)&&m.get(k).pres.some(q=>q.cant===p.cant&&q.unidad===p.unidad))k=base+"#"+(++n)}   // dos productos distintos del mismo tamaño no comparten ficha
+    if(!m.has(k))m.set(k,{k,marca:p.marca,cat:p.cat,tipo:p.tipo,pres:[]});
+    m.get(k).pres.push(p);
+  });
   return [...m.values()].map(f=>{
     f.pres.sort((a,b)=>a.unidad.localeCompare(b.unidad)||a.cant-b.cant);
     f.main=[...f.pres].sort((a,b)=>b.of.length-a.of.length||a.name.length-b.name.length)[0];
@@ -536,35 +581,32 @@ function familias(v){
 }
 
 function card(f, i = 0){
-  const p=f.minP,hi=p.of[p.of.length-1];
+  const p=f.minP;
   return `<a class="pcard" href="${href(f)}" style="--c:${catColor(f.cat)}; animation-delay: ${i * 0.05}s">
-    <div class="pim-wrap">${thumb(f)}${p.ahorro>0?`<span class="off-badge">-${p.ahorro}%</span>`:""}</div>
+    <div class="pim-wrap">${thumb(f)}${p.ahorro>=10?`<span class="off-badge">-${p.ahorro}%</span>`:""}</div>
     <div class="pb">
       <div class="mkb">${esc(f.marca)} • ${size(p)}</div>
       <h3>${esc(f.name)}</h3>
-      <div class="price-row"><div class="pp">${money(p.best.price)}</div>${hi.price>p.best.price?`<div class="ps"><s>${money(hi.price)}</s></div>`:""}</div>
-      <div class="pst">🔥 en ${esc(p.best.store)}</div>
+      <div class="pp">${money(p.best.price)}</div>
+      <div class="pst">en ${esc(p.best.store)}</div>
     </div>
   </a>`;
 }
 
 function item(f, i = 0){
-  const p=f.minP,hi=p.of[p.of.length-1],sz=f.pres.map(size);
+  const p=f.minP,sz=f.pres.map(size);
   const delay = Math.min(i * 0.04, 0.8);
   return `<a class="it" href="${href(f)}" style="--c:${catColor(f.cat)}; animation-delay: ${delay}s">
     <div class="pim-wrap">${thumb(f)}</div>
     <div class="im2">
       <div class="mkb">${esc(f.marca)}${f.tipo?" • "+esc(f.tipo):""}</div>
       <h3>${esc(f.name)}</h3>
-      <div class="chs">${sz.slice(0,4).map(x=>`<span>${x}</span>`).join("")}${sz.length>4?`<span>+${sz.length-4}</span>`:""}</div>
-      <div class="cmpt">Comparado en ${f.tiendas} ${f.tiendas===1?"tienda":"tiendas"}</div>
+      <div class="chs">${sz.slice(0,3).map(x=>`<span>${x}</span>`).join("")}${sz.length>3?`<span>+${sz.length-3}</span>`:""}</div>
     </div>
     <div class="ir">
-      ${hi.price>p.best.price?`<s>${money(hi.price)}</s>`:""}
       <div class="pp">${f.pres.length>1?"<small>desde</small> ":""}${money(f.min)}</div>
-      ${f.ahorro>0?`<span class="tg">-${f.ahorro}% OFF</span>`:""}
-      <div class="pst" style="color:var(--mut)">en ${esc(p.best.store)}${p.best.cash?'<span class="cashb">transferencia</span>':""}</div>
-      <div class="pst" style="color:var(--mut);font-weight:500">${refTxt(p)}</div>
+      <div class="pst">en ${esc(p.best.store)}${f.tiendas>1?" · "+f.tiendas+" tiendas":""}</div>
+      ${f.ahorro>=10?`<span class="tg">-${f.ahorro}%</span>`:""}
     </div>
   </a>`;
 }
@@ -598,7 +640,7 @@ function calcDur(p){
 }
 function calcHTML(p){
   const dv=S.dosis??dosisDef(p),tv=S.tomas??1;
-  return `<div class="calc"><h3>¿Cuánto te dura?</h3><div class="calc-in"><label for="dosis">${p.unidad==="g"?"Gramos por toma":p.cat==="Barras y snacks"?"Barras por toma":"Cápsulas por toma"}<input id="dosis" type="number" inputmode="decimal" min="0" step="any" value="${esc(dv)}"></label><label for="tomas">Tomas por día<input id="tomas" type="number" inputmode="decimal" min="0" step="any" value="${esc(tv)}"></label></div><p class="calc-out" id="durOut" aria-live="polite">${calcDur(p)}</p></div>`;
+  return `<div class="calc"><div class="calc-in"><label for="dosis">${p.unidad==="g"?"Gramos por toma":p.cat==="Barras y snacks"?"Barras por toma":"Cápsulas por toma"}<input id="dosis" type="number" inputmode="decimal" min="0" step="any" value="${esc(dv)}"></label><label for="tomas">Tomas por día<input id="tomas" type="number" inputmode="decimal" min="0" step="any" value="${esc(tv)}"></label></div><p class="calc-out" id="durOut" aria-live="polite">${calcDur(p)}</p></div>`;
 }
 function actualizarDur(){const f=ALLF.find(x=>x.k===S.k),o=$("durOut");if(f&&o){const p=f.pres[S.i]||f.pres[0];o.innerHTML=calcDur(p)}}
 function vacioHTML(){
@@ -617,7 +659,7 @@ function render(){
   if(VIEW!=="home")return;
   clearTimeout(renderTimer);
   
-  const v=visibles();FAMS=familias(v);FAMS.sort(SORTS[sortKey()][1]);
+  const v=visibles();FAMS=familias(v,FKEY);FAMS.sort(SORTS[sortKey()][1]);
   const t=tags(),nf=t.filter(x=>!["q","cat","goal"].includes(x[0])).length;
   
   // Actualizar UI rápida
@@ -719,56 +761,56 @@ function histHTML(H){
   if(!H||H.length<2)return "";
   const v=H.map(x=>x[1]),mn=Math.min(...v),a=H[0],z=H[H.length-1],ch=Math.round((z[1]/a[1]-1)*100);
   const txt=ch<0?`Bajó <b>${-ch}%</b> desde el ${fd(a[0])}`:ch>0?`Subió <b>${ch}%</b> desde el ${fd(a[0])}`:`Sin cambios desde el ${fd(a[0])}`;
-  return `<section class="sec"><h2>Historial de precios</h2>${spark(H)}<p class="hnote">${txt}. ${z[1]<=mn?"Hoy está en el precio más bajo del período.":`El más bajo del período fue <b>${money(mn)}</b>.`}</p></section>`;
+  return `${spark(H)}<p class="hnote">${txt}. ${z[1]<=mn?"Hoy está en el precio más bajo del período.":`El más bajo del período fue <b>${money(mn)}</b>.`}</p>`;
 }
 function prodHTML(f){
   const p=f.pres[S.i]||f.pres[0],b=p.best,hi=p.of[p.of.length-1],nm=limpio(p.name)||p.name,I=f.info||{},bl=I.beneficios||[];
   const rel=ALLF.filter(x=>x.cat===f.cat&&x.k!==f.k).sort((a,c)=>c.ahorro-a.ahorro).slice(0,6);
-  const go=web(b.url)?`<a class="cta" href="${esc(b.url)}" target="_blank" rel="noopener noreferrer">Comprar en ${esc(b.store)}</a>`:`<span class="cta off">Comprar en ${esc(b.store)}</span>`;
-  const know=bl.length?bl.slice(0,5):[`Contenido: ${size(p)}`,f.tipo&&`Tipo: ${f.tipo}`,`Lo encontramos en ${p.of.length} ${p.of.length===1?"tienda":"tiendas"}`,`Sale ${refTxt(p)}`].filter(Boolean);
-  const otras=p.of.slice(1).map(o=>`<div class="ro"><span>${esc(o.store)}</span><b>${money(o.price)}</b>${web(o.url)?`<a href="${esc(o.url)}" target="_blank" rel="noopener noreferrer">Ir ↗</a>`:""}</div>`).join("");
+  const aviso=`Elegí ${size(p)} en la tienda`;
+  const go=web(b.url)?`<a class="cta" href="${esc(b.url)}" target="_blank" rel="noopener noreferrer">Ir a ${esc(b.store)} ↗</a>`:`<span class="cta off">Ir a ${esc(b.store)}</span>`;
+  const otras=p.of.slice(1,4).map(o=>web(o.url)?`<a href="${esc(o.url)}" target="_blank" rel="noopener noreferrer">${esc(o.store)} ${money(o.price)}</a>`:`<span>${esc(o.store)} ${money(o.price)}</span>`).join("");
   const colE=!S.cash&&p.of.some(o=>o.efectivo);
-  const rows=p.of.map((o,j)=>`<tr${j?"":' class="best"'}><td>${esc(o.store)}${j?"":'<span class="tg">Mejor precio</span>'}</td><td class="num">${money(o.price)}${o.cash?'<span class="cashb">transferencia</span>':""}${o.lista&&o.lista>o.price?`<br><s style="color:var(--mut);font-size:13px">${money(o.lista)}</s>`:""}</td>${colE?`<td class="num xs">${o.efectivo?money(o.efectivo):"—"}</td>`:""}<td class="num xs">${j?"+"+Math.round((o.price/b.price-1)*100)+"%":"—"}</td><td class="num xs">${money(o.price/p.cant*(p.unidad==="g"?1000:1))} ${p.unidad==="g"?"/kg":"/"+uni(p)[1]}</td><td class="num">${web(o.url)?`<a class="btn2" href="${esc(o.url)}" target="_blank" rel="noopener noreferrer">Ver</a>`:""}</td></tr>`).join("");
+  const rows=p.of.map((o,j)=>`<tr${j?"":' class="best"'}><td><b>${esc(o.store)}</b>${j?"":'<span class="tg">Mejor precio</span>'}${o.titulo?`<div class="tt">${esc(o.titulo)}</div>`:""}${o.exacto===false?`<div class="tt hint">${esc(aviso)}</div>`:""}</td><td class="num">${money(o.price)}${o.cash?'<span class="cashb">transferencia</span>':""}${o.lista&&o.lista>o.price?`<br><s style="color:var(--mut);font-size:13px">${money(o.lista)}</s>`:""}</td>${colE?`<td class="num xs">${o.efectivo?money(o.efectivo):"—"}</td>`:""}<td class="num xs">${j?"+"+Math.round((o.price/b.price-1)*100)+"%":"—"}</td><td class="num xs">${money(o.price/p.cant*(p.unidad==="g"?1000:1))} ${p.unidad==="g"?"/kg":"/"+uni(p)[1]}</td><td class="num">${web(o.url)?`<a class="btn2" href="${esc(o.url)}" target="_blank" rel="noopener noreferrer">Ir</a>`:""}</td></tr>`).join("");
   const spec=[["Marca",f.marca],["Categoría",f.cat],f.tipo&&["Tipo",f.tipo],["Presentación",p.unidad==="u"?(p.cat==="Barras y snacks"?"Unidades (barras, sobres)":"Cápsulas o comprimidos"):"Polvo o por peso"],["Contenido",size(p)],f.sabores.length&&["Sabores",f.sabores.join(", ")],["Tiendas con este tamaño",p.of.length]].filter(Boolean).map(([k,v])=>`<tr><th>${k}</th><td>${esc(v)}</td></tr>`).join("");
+  const mini=[["Contenido",size(p)],["Presentación",p.unidad==="u"?(p.cat==="Barras y snacks"?"Barras o sobres":"Cápsulas"):"Polvo"],f.tipo&&["Tipo",f.tipo],["Marca",f.marca]].filter(Boolean).map(([k,v])=>`<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("");
+  const know=bl.length?bl.slice(0,5):[`Contenido: ${size(p)}`,f.tipo&&`Tipo: ${f.tipo}`,`Lo encontramos en ${p.of.length} ${p.of.length===1?"tienda":"tiendas"}`,`Sale ${refTxt(p)}`].filter(Boolean);
   const N=I.nutri&&I.nutri.filas&&I.nutri.filas.length?I.nutri:null;
-  return `<div class="in"><nav class="bc" aria-label="Ruta"><a href="#/">Inicio</a><span>/</span><a href="#/" data-a="cat" data-v="${esc(f.cat)}">${esc(f.cat)}</a><span>/</span><span style="color:var(--ink)">${esc(nm)}</span></nav>
+  const det=(t,body)=>body?`<details class="mo"><summary>${t}</summary><div class="mob">${body}</div></details>`:"";
+  const detalles=`<div class="know"><h3>Lo que tenés que saber de este producto</h3><ul>${know.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`
+    +(f.sabores.length?`<div class="optg"><span class="lbl">Sabores disponibles</span><div class="opts">${f.sabores.map(x=>`<span>${esc(x)}</span>`).join("")}</div></div>`:"")
+    +(f.desc?`<p class="txt">${esc(f.desc)}</p>`:"");
+  const nutri=N?`${N.porcion?`<p class="hnote" style="margin:0 0 12px">${esc(N.porcion)}</p>`:""}<table class="tb nt"><thead><tr><th>Nutriente</th><th class="num">Por porción</th><th class="num">% VD</th></tr></thead><tbody>${N.filas.map(r=>`<tr><td>${esc(r[0])}</td><td class="num">${esc(r[1]||"-")}</td><td class="num">${esc(r[2]||"-")}</td></tr>`).join("")}</tbody></table>`:"";
+  const uso=(I.ingredientes?`<h3 class="sub">Ingredientes</h3><p class="txt">${esc(I.ingredientes)}</p>`:"")+(I.uso?`<h3 class="sub">Modo de uso</h3><p class="txt">${esc(I.uso)}</p>`:"");
+  return `<div class="in"><nav class="bc" aria-label="Ruta"><a href="#/">Inicio</a><span>/</span><a href="#/" data-a="cat" data-v="${esc(f.cat)}">${esc(f.cat)}</a><span>/</span><span style="color:var(--ink)">${esc(nm)}</span><button class="share" data-a="share" type="button" aria-label="Copiar enlace de este producto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg><span id="share-txt">Copiar enlace</span></button></nav>
   <div class="pgrid">
     <div class="gal">${thumb(f)}</div>
     <div class="pi">
       <span class="mkb">${esc(f.marca)}${f.tipo?" • "+esc(f.tipo):""}</span>
       <h1>${esc(nm)}</h1>
-      <div class="pcen"><b>${money(b.price)}</b>${hi.price>b.price?`<s>${money(hi.price)}</s><span class="tg">${p.ahorro}% OFF</span>`:""}</div>
-      <div class="mkb2">El más barato: ${esc(b.store)} · ${refTxt(p)}${b.cash?" · con transferencia":""}</div>
-      <div class="optg"><span class="lbl">Seleccionar tamaño</span><div class="opts">${f.pres.map((q,j)=>`<button data-a="size" data-v="${j}" aria-pressed="${j===S.i}">${size(q)}</button>`).join("")}</div></div>
-      ${f.sabores.length?`<div class="optg"><span class="lbl">Sabores disponibles</span><div class="opts">${f.sabores.map(x=>`<span>${esc(x)}</span>`).join("")}</div></div>`:""}
-      ${calcHTML(p)}
-      <div class="know"><h3>Lo que tenés que saber de este producto</h3><ul>${know.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>
-      <section class="sec"><h2>Comparar precios por tienda</h2><table class="tb"><thead><tr><th>Tienda</th><th class="num">Precio</th>${colE?'<th class="num xs">Con transferencia</th>':""}<th class="num xs">Dif.</th><th class="num xs">Costo/Unidad</th><th></th></tr></thead><tbody>${rows}</tbody></table></section>
-      ${histHTML(p.hist)}
-      <section class="sec"><h2>Características del producto</h2><table class="spec"><tbody>${spec}</tbody></table></section>
-      ${f.desc?`<section class="sec"><h2>Descripción</h2><p class="txt">${esc(f.desc)}</p></section>`:""}
-      ${N?`<section class="sec"><h2>Información nutricional</h2>${N.porcion?`<p class="hnote" style="margin:0 0 12px">${esc(N.porcion)}</p>`:""}<table class="tb nt"><thead><tr><th>Nutriente</th><th class="num">Por porción</th><th class="num">% VD</th></tr></thead><tbody>${N.filas.map(r=>`<tr><td>${esc(r[0])}</td><td class="num">${esc(r[1]||"-")}</td><td class="num">${esc(r[2]||"-")}</td></tr>`).join("")}</tbody></table></section>`:""}
-      ${I.ingredientes?`<section class="sec"><h2>Ingredientes</h2><p class="txt">${esc(I.ingredientes)}</p></section>`:""}
-      ${I.uso?`<section class="sec"><h2>Modo de uso</h2><p class="txt">${esc(I.uso)}</p></section>`:""}
-      <section class="sec"><h2>Preguntas frecuentes</h2>${faqs(f,p,nm).map(([q,a],j)=>`<details class="faq"${j?"":" open"}><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join("")}</section>
+      <div class="optg"><span class="lbl">Cantidad</span><div class="opts">${f.pres.map((q,j)=>`<button data-a="size" data-v="${j}" aria-pressed="${j===S.i}">${size(q)}</button>`).join("")}</div></div>
+      <dl class="mini">${mini}</dl>
+      <div class="buy">
+        <div class="bb-price"><b>${money(b.price)}</b>${p.ahorro>=10?`<span class="tg">${p.ahorro}% OFF</span>`:""}</div>
+        <div class="bb-store">en <b>${esc(b.store)}</b>${b.cash?'<span class="cashb">transferencia</span>':""}${b.titulo?`<div class="tt">${esc(b.titulo)}</div>`:""}</div>
+        ${go}
+        ${b.exacto===false?`<span class="hint">${esc(aviso)}</span>`:""}
+        ${otras?`<div class="alt"><span>También en</span>${otras}</div>`:""}
+      </div>
     </div>
-    <aside class="buy">
-      <span class="lb">Mejor precio hoy</span>
-      <div class="pn"><b>${money(b.price)}</b></div>
-      <div class="mkb">en <b style="color:var(--ink)">${esc(b.store)}</b>${b.cash?'<span class="cashb">transferencia</span>':""}</div>
-      ${go}
-      <button class="btn2" data-a="share" type="button" style="background:var(--soft);color:var(--ink);margin-top:12px;width:100%;display:flex;justify-content:center;align-items:center;gap:8px;font-size:14px;padding:12px">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
-        <span id="share-txt">Copiar enlace</span>
-      </button>
-      <p style="font-size:13px;color:var(--mut);margin-top:16px;text-align:center">Te llevamos a la tienda para completar la compra.</p>
-      ${otras?`<div style="margin-top:32px"><span class="lb">Otras opciones de compra</span>${otras}</div>`:""}
-    </aside>
   </div>
+  <section class="sec"><h2>Comparar precios por tienda</h2><table class="tb"><thead><tr><th>Tienda</th><th class="num">Precio</th>${colE?'<th class="num xs">Con transferencia</th>':""}<th class="num xs">Dif.</th><th class="num xs">Costo/Unidad</th><th></th></tr></thead><tbody>${rows}</tbody></table></section>
+  <section class="sec more"><h2>Más detalles</h2>
+    ${det("¿Cuánto te dura?",calcHTML(p))}
+    ${det("Detalles del producto",detalles)}
+    ${det("Historial de precios",histHTML(p.hist))}
+    ${det("Características del producto",`<table class="spec"><tbody>${spec}</tbody></table>`)}
+    ${det("Información nutricional",nutri)}
+    ${det("Ingredientes y modo de uso",uso)}
+    ${det("Preguntas frecuentes",faqs(f,p,nm).map(([q,a],j)=>`<details class="faq"${j?"":" open"}><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join(""))}
+  </section>
   ${rel.length?`<div class="sec"><h2>Productos relacionados</h2><div class="strip">${rel.map(card).join("")}</div></div>`:""}
   </div><div class="stk"><div><small style="display:block;color:var(--mut);font-weight:600;font-size:13px;text-transform:uppercase">Mejor precio</small><b>${money(b.price)}</b></div>${go}</div>`;
 }
-
 function mountProd(f){
   VIEW="prod";S.k=f.k;if(!S._keep){S.i=Math.max(0,f.pres.indexOf(f.main));S.dosis=null;S.tomas=null}S._keep=false;
   $("app").innerHTML=prodHTML(f);document.body&&document.body.classList.add("has-stk");
@@ -912,6 +954,7 @@ function calcular(){
   prep();
   const all=FLAT.map(p=>{const w=p.of[p.of.length-1];return {...p,best:p.of[0],ahorro:p.of.length>1?Math.round((w.price-p.of[0].price)/w.price*100):0}});
   ALLF=familias(all);
+  FKEY=new Map();ALLF.forEach(f=>f.pres.forEach(p=>FKEY.set(p._i,f.k)));
   TOPF=[...ALLF].sort((a,b)=>b.ahorro-a.ahorro).filter(f=>f.ahorro>0).slice(0,6);
   CATS=["Todo",...ORDEN.filter(c=>FLAT.some(p=>p.cat===c)),...[...new Set(FLAT.map(p=>p.cat))].filter(c=>!ORDEN.includes(c))];
 }

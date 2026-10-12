@@ -49,18 +49,38 @@ TIENDAS = [
     {"nombre": "ENA Sport", "base": "https://www.enasport.com", "tipo": "shopify", "marca": "ENA"},
     {"nombre": "Recoleta al Fallo", "base": "https://recoletaalfallo.com.ar", "tipo": "auto", "efectivo": 0.15},
     {"nombre": "Suplementate", "base": "https://suplementate.com.ar", "tipo": "auto"},
-    {"nombre": "Nutrición Muscular", "base": "https://nutricionmuscular.com.ar", "tipo": "auto"},
+    {"nombre": "Nutrición Muscular", "base": "https://nutricionmuscular.com.ar", "tipo": "auto", "efectivo": 0.10},
     {"nombre": "DeMusculos", "base": "https://www.demusculos.com", "tipo": "auto"},
     {"nombre": "Morashop", "base": "https://www.morashop.ar", "tipo": "auto"},
     {"nombre": "Rosario Suplementos", "base": "https://rosariosuplementos.com", "tipo": "auto"},
     {"nombre": "Gentech", "base": "https://www.gentech.com.ar", "tipo": "auto", "marca": "Gentech"},
+    {"nombre": "ADN Nutrition", "base": "https://www.adnnutrition.com.ar", "tipo": "auto", "efectivo": 0.10},
+    {"nombre": "Farmacity", "base": "https://www.farmacity.com", "tipo": "auto"},
+    {"nombre": "Farmacia Leloir", "base": "https://www.farmacialeloir.com.ar", "tipo": "auto", "efectivo": 0.10},
+    {"nombre": "Entreno", "base": "https://www.entreno.com.ar", "tipo": "auto"},
+    {"nombre": "TR Fitness", "base": "https://trfitness.com.ar", "tipo": "auto"},
+    {"nombre": "3F Suplementos", "base": "https://www.3fsuplementos.com.ar", "tipo": "auto"},
+    {"nombre": "Megatone", "base": "https://www.megatone.net", "tipo": "auto"},
+    {"nombre": "Central Oeste", "base": "https://www.centraloeste.com.ar", "tipo": "sitemap", "patron": ".html"},
+    {"nombre": "Decathlon", "base": "https://www.decathlon.com.ar", "tipo": "auto"},
     {"nombre": "Nutrishop", "base": "https://www.nutrishop.com.ar", "tipo": "sitemap"},
-    {"nombre": "Mercado Libre", "tipo": "mercadolibre"},
+    {"nombre": "Mercado Libre", "tipo": "mercadolibre"},   # incluye los vendedores de ML_VENDEDORES, cada uno como tienda propia
 ]
 ML_CONSULTAS = ["creatina monohidrato", "whey protein", "proteina en polvo", "pre entreno", "bcaa",
                 "citrato de magnesio", "bisglicinato de magnesio", "omega 3", "vitamina d3", "multivitaminico",
                 "colageno hidrolizado", "ganador de peso", "quemador de grasa", "barras proteicas", "electrolitos isotonico"]
-ML_VENDEDORES = {"NUTRISHOP": "Nutrishop (Mercado Libre)"}  # nombre de usuario -> cómo se muestra
+ML_VENDEDORES = {   # nombre de usuario en Mercado Libre -> cómo se muestra. (Los nombres salen de las direcciones de sus tiendas;
+    "NUTRISHOP": "Nutrishop (Mercado Libre)",       #  si alguno no devuelve nada en reporte.json, hay que corregir el nombre de usuario)
+    "MORASHOP": "Morashop (Mercado Libre)",
+    "RTN SUPLEMENTOS": "RTN Suplementos (Mercado Libre)",
+    "DMS NUTRITION": "DMS Nutrition (Mercado Libre)",
+    "MOYFIT4046": "Moyfit (Mercado Libre)",
+    "APPLIEDNUTRITION": "Applied Nutrition (Mercado Libre)",
+    "TIENDA MERCADO": "Tienda Mercado (Mercado Libre)",
+    "CORENUTRITION": "Core Nutrition (Mercado Libre)",
+    "SUPLEMENTOSNORT": "Suplementos Nort (Mercado Libre)",
+    "SUPLESUR": "Suplesur (Mercado Libre)",
+}
 
 DB, SALIDA, REPORTE = "precios.db", "datos.json", "reporte.json"
 CONTACTO = os.environ.get("SCRAPER_CONTACTO", "")       # ej. "contacto@tusitio.com": las tiendas pueden escribirte
@@ -70,8 +90,9 @@ TIMEOUT = 30
 REINTENTOS = 4
 FALLAS_SEGUIDAS = 8       # pedidos fallidos seguidos a un sitio antes de dejarlo en paz
 MAX_PAGINAS = 400         # tope de seguridad contra bucles (no limita el catálogo real)
-MAX_SEGUNDOS_TIENDA = 3000
-HILOS = 4                 # tiendas en paralelo (cada sitio igual se lee de a un pedido)
+MAX_SEGUNDOS_TIENDA = 1800   # tope por tienda (30 min)
+MAX_SEGUNDOS_TOTAL = 13200   # tope de toda la corrida (3 h 40 min): después se guarda lo leído y se termina
+HILOS = 8                 # tiendas en paralelo (cada sitio igual se lee de a un pedido)
 DIAS_HISTORIAL = 90
 VERIFICAR_ENLACES = int(os.environ.get("SCRAPER_VERIFICAR", "2"))   # enlaces a comprobar por tienda (0 = ninguno)
 PISO_CONSERVAR = 0.5      # si una tienda devuelve menos de este % de lo anterior, se conserva la lectura previa
@@ -313,7 +334,7 @@ def secciones(html):
     return out
 
 
-def registro(titulo, variante, precio, url, marca_def=None, extra="", marca_ext=None, lista=0, ean="", sku=""):
+def registro(titulo, variante, precio, url, marca_def=None, extra="", marca_ext=None, lista=0, ean="", sku="", exacto=True):
     """Oferta normalizada con todos los campos, o None si no sirve (se anota el motivo en ctx si se pasa)."""
     precio, lista = numero(precio), numero(lista) or 0.0
     titulo = re.sub(r"\s+", " ", str(titulo or "")).strip()
@@ -327,7 +348,7 @@ def registro(titulo, variante, precio, url, marca_def=None, extra="", marca_ext=
     return {"nombre": nombre, "titulo": titulo, "marca": marca_de(titulo) or canon_marca(marca_ext) or marca_def,
             "cat": cat, "tipo": tipo_de(cat, titulo), "cant": cant[0], "unidad": cant[1], "precio": precio,
             "url": limpiar_url(url), "lista": lista if lista > precio else 0.0, "ean": re.sub(r"\D", "", str(ean or "")),
-            "sku": str(sku or ""), "imagen": "", "desc": "", "sabores": [], "info": {}}
+            "sku": str(sku or ""), "exacto": bool(exacto), "imagen": "", "desc": "", "sabores": [], "info": {}}
 
 
 # ============================ RED: educada y resistente ============================
@@ -475,6 +496,9 @@ def bajar(url, token=None, robots=True):
     return pedir(url, token=token, robots=robots).texto
 
 
+_INICIO = [None]   # momento en que arrancó la corrida completa
+
+
 class Ctx:
     """Seguimiento de una tienda durante la corrida: errores, motivos de descarte y tiempo."""
     def __init__(self, nombre):
@@ -490,7 +514,7 @@ class Ctx:
         self.omitidos[motivo] += 1
 
     def vence(self):
-        if time.monotonic() - self.t0 > MAX_SEGUNDOS_TIENDA:
+        if time.monotonic() - self.t0 > MAX_SEGUNDOS_TIENDA or (_INICIO[0] and time.monotonic() - _INICIO[0] > MAX_SEGUNDOS_TOTAL):
             self.vencida = True
         return self.vencida
 
@@ -617,8 +641,10 @@ def _filas_woo(t, p, ctx):
         pr = v.get("prices") or {}
         etiqueta = " ".join(str(a.get("value", "")) for a in v.get("attributes", []) if v is not p)
         url = v.get("permalink") or p.get("permalink", "")
+        es_variacion = v is not p
+        exacto = (url != p.get("permalink")) if es_variacion else (p.get("type") != "variable")   # sin dirección propia: hay que elegir el tamaño en la tienda
         r = registro(nombre, etiqueta, _precio_woo(pr, "price"), url, t.get("marca"), cats,
-                     marca_ext=marcas[0] if marcas else None, lista=_precio_woo(pr, "regular_price"), sku=v.get("sku"))
+                     marca_ext=marcas[0] if marcas else None, lista=_precio_woo(pr, "regular_price"), sku=v.get("sku"), exacto=exacto)
         if not r:
             ctx.omitir("no_es_suplemento_o_sin_tamano")
             continue
@@ -725,7 +751,8 @@ def filas_de_pagina(t, url, ctx, html=None):
             ou = of.get("url")
             enlace = ou if ou and _ruta(ou) == _ruta(url) else url      # solo se acepta un enlace de variante de ESTA página
             r = registro(nombre, of.get("name") if len(ofertas) > 1 else "", precio, enlace, t.get("marca"),
-                         marca_ext=marca, ean=of.get("gtin13") or of.get("gtin") or gtin, sku=of.get("sku") or prod.get("sku"))
+                         marca_ext=marca, ean=of.get("gtin13") or of.get("gtin") or gtin, sku=of.get("sku") or prod.get("sku"),
+                         exacto=len(ofertas) <= 1 or enlace != url)
             if not r:
                 ctx.omitir("no_es_suplemento_o_sin_tamano")
                 continue
@@ -760,6 +787,69 @@ def leer_sitemap(t, ctx, cache=None):
             raise
         except Exception as e:
             ctx.error(url, e)    # una página que falla no frena a las demás
+    return filas
+
+
+VTEX_CONSULTAS = ["creatina", "proteina whey", "pre entreno", "bcaa aminoacidos", "magnesio", "omega 3", "vitamina",
+                  "colageno", "barras proteicas", "ganador de peso", "quemador de grasa", "isotonico electrolitos"]
+
+
+def _filas_vtex(t, p, vistos, ctx):
+    nombre, link = unescape(p.get("productName", "")), p.get("link") or ""
+    if link.startswith("/"):
+        link = t["base"] + link
+    cats = " ".join(p.get("categories") or [])
+    out = []
+    for it in p.get("items", []):
+        sku = it.get("itemId")
+        if sku in vistos:        # el mismo SKU aparece en varias búsquedas
+            continue
+        vistos.add(sku)
+        ofs = [(s.get("commertialOffer") or {}) for s in it.get("sellers", [])]
+        ofs = [o for o in ofs if (o.get("AvailableQuantity") or 0) > 0 and o.get("Price")]
+        if not ofs:
+            ctx.omitir("sin_stock")
+            continue
+        o = min(ofs, key=lambda x: x["Price"])
+        variante = it.get("name") if it.get("name") and it.get("name") != nombre else ""
+        # ?skuId= hace que la página abra justo esa variante
+        r = registro(nombre, variante, o["Price"], f"{link}{'&' if '?' in link else '?'}skuId={sku}", t.get("marca"), cats,
+                     marca_ext=p.get("brand"), lista=o.get("ListPrice"), ean=it.get("ean"), sku=sku)
+        if not r:
+            ctx.omitir("no_es_suplemento_o_sin_tamano")
+            continue
+        r.update(imagen=((it.get("images") or [{}])[0]).get("imageUrl", ""), desc=limpiar(p.get("description", "")))
+        out.append(r)
+    return out
+
+
+def leer_vtex(t, ctx, cache=None):
+    """Tiendas hechas con VTEX (Farmacity y otras): se recorre su API de catálogo por búsquedas, de a 50 resultados."""
+    filas, vistos = ctx.filas, set()
+    for q in t.get("consultas", VTEX_CONSULTAS):
+        desde = 0
+        while desde < 2500 and not ctx.vence():
+            try:
+                lote = pedir(f'{t["base"]}/api/catalog_system/pub/products/search?ft={urllib.parse.quote(q)}&_from={desde}&_to={desde + 49}').json()
+            except (Bloqueado, PermissionError):
+                raise
+            except Exception as e:
+                ctx.error(f"búsqueda '{q}' desde {desde}", e)
+                break
+            if not isinstance(lote, list) or not lote:
+                break
+            ctx.paginas += 1
+            for p in lote:
+                ctx.leidos += 1
+                try:
+                    filas += _filas_vtex(t, p, vistos, ctx)
+                except (Bloqueado, PermissionError):
+                    raise
+                except Exception as e:
+                    ctx.error(f"producto {p.get('productName')}", e)
+            if len(lote) < 50:
+                break
+            desde += 50
     return filas
 
 
@@ -833,10 +923,17 @@ def detectar(t):
         raise
     except Exception:
         pass
+    try:
+        if isinstance(pedir(f'{t["base"]}/api/catalog_system/pub/products/search?_from=0&_to=0').json(), list):
+            return "vtex"
+    except Bloqueado:
+        raise
+    except Exception:
+        pass
     return "sitemap"
 
 
-LECTORES = {"shopify": leer_shopify, "woocommerce": leer_woo, "sitemap": leer_sitemap, "mercadolibre": leer_mercadolibre}
+LECTORES = {"shopify": leer_shopify, "woocommerce": leer_woo, "vtex": leer_vtex, "sitemap": leer_sitemap, "mercadolibre": leer_mercadolibre}
 
 
 def leer_tienda(t, cache=None):
@@ -905,7 +1002,7 @@ def fusionables(a, b, fa, fb):
     if (a.get("marca") or "Sin marca") == "Sin marca":
         return bool(fa) and bool(fb) and s is not None and s >= 0.6 and r <= 2.0   # sin marca: solo con palabras propias en común
     if s is None:
-        return r <= 1.3                       # uno es genérico: solo si el precio es muy parecido
+        return False       # uno es genérico y el otro tiene línea propia: ante la duda NO se unen (mejor separados que un enlace a otro producto)
     return s >= 0.5 and r <= 2.5
 
 
@@ -961,14 +1058,21 @@ def _armar_grupo(marca, cat, tipo, unidad, cant, fs, firmas):
     ofertas = []
     for tienda, f in por_tienda.items():
         o = {"store": tienda, "titulo": f.get("titulo") or f["nombre"], "price": f["precio"], "lista": f.get("lista") or None,
-             "efectivo": f.get("efectivo") or None, "url": f["url"], "seen": (f.get("fecha") or "")[:10]}
+             "efectivo": f.get("efectivo") or None, "url": f["url"], "exacto": bool(f.get("exacto", True)),
+             "seen": (f.get("fecha") or "")[:10], "_f": firma(f)}
         ofertas.append(o)
+    # Control final: si el grupo tiene línea propia, se sacan las ofertas cuyo título dice otra cosa (por si una cadena de uniones se pasó)
+    if linea:
+        ref = frozenset(linea.split())
+        ofertas = [o for o in ofertas if not o["_f"] or (similitud(ref, o["_f"]) or 0) >= 0.5]
     # Con 3 o más tiendas, una oferta con precio por unidad muy fuera de lo normal casi seguro es otro producto (pack, otro tamaño)
     descartadas = 0
     if len(ofertas) >= 3:
         med = statistics.median(o["price"] for o in ofertas)
         buenas = [o for o in ofertas if med / 2.5 <= o["price"] <= med * 2.5]
         descartadas, ofertas = len(ofertas) - len(buenas), buenas
+    for o in ofertas:
+        o.pop("_f", None)
     ofertas.sort(key=lambda o: o["price"])
     def primero(campo, vacio):
         return next((f[campo] for f in fs if f.get(campo)), vacio)
@@ -1002,7 +1106,7 @@ def verificar_enlace(oferta, marca):
 COLUMNAS = [("fecha", "text"), ("tienda", "text"), ("producto", "text"), ("marca", "text"), ("categoria", "text"),
             ("tipo", "text"), ("cantidad", "real"), ("unidad", "text"), ("precio", "real"), ("url", "text"),
             ("imagen", "text"), ("descripcion", "text"), ("sabores", "text"), ("info", "text"), ("lista", "real"),
-            ("ean", "text"), ("efectivo", "real"), ("titulo", "text")]
+            ("ean", "text"), ("efectivo", "real"), ("titulo", "text"), ("exacto", "integer")]
 
 
 def abrir_db():
@@ -1047,13 +1151,14 @@ def guardar_tienda(con, cache, t, filas, ctx, rep):
                         [(fecha, f.get("tienda", t["nombre"]), f["nombre"], f["marca"], f["cat"], f["tipo"], f["cant"], f["unidad"],
                           f["precio"], f["url"], f.get("imagen", ""), f.get("desc", ""), json.dumps(f.get("sabores") or [], ensure_ascii=False),
                           json.dumps(f.get("info") or {}, ensure_ascii=False), f.get("lista") or 0, f.get("ean", ""), f.get("efectivo") or 0,
-                          f.get("titulo", "")) for f in filas])
+                          f.get("titulo", ""), int(f.get("exacto", True))) for f in filas])
         con.commit()
         rep["estado"] = "parcial" if (ctx.bloqueada or ctx.vencida) else "ok"
 
 
 def main():
     inicio = time.time()
+    _INICIO[0] = time.monotonic()
     con = abrir_db()
     cache = Cache(con)
     reportes = {}
@@ -1081,11 +1186,11 @@ def main():
     fecha, dia = ahora.isoformat(timespec="seconds"), ahora.date().isoformat()
     with cache.lock:
         ult = con.execute("""select tienda, producto, marca, categoria, tipo, cantidad, unidad, precio, url, imagen, descripcion,
-            sabores, info, lista, ean, efectivo, fecha, titulo from ofertas
+            sabores, info, lista, ean, efectivo, fecha, titulo, exacto from ofertas
             where (tienda, fecha) in (select tienda, max(fecha) from ofertas group by tienda)""").fetchall()
     filas = [dict(tienda=a, nombre=b, marca=c, cat=d, tipo=e, cant=int(g), unidad=h, precio=p, url=u, imagen=i or "", desc=d2 or "",
                   sabores=json.loads(s or "[]"), info=json.loads(inf or "{}"), lista=li or 0, ean=ean or "", efectivo=ef or 0,
-                  fecha=fe, titulo=ti or b) for a, b, c, d, e, g, h, p, u, i, d2, s, inf, li, ean, ef, fe, ti in ult]
+                  fecha=fe, titulo=ti or b, exacto=(ex is None or bool(ex))) for a, b, c, d, e, g, h, p, u, i, d2, s, inf, li, ean, ef, fe, ti, ex in ult]
     productos = agrupar(filas)
     # Comprobación por muestreo: ¿el enlace lleva de verdad a ese producto?
     for t in TIENDAS:
