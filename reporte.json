@@ -1,21 +1,21 @@
 {
- "fecha": "2026-10-12T21:38:10+00:00",
- "segundos": 1349,
- "productos": 514,
- "comparables": 94,
+ "fecha": "2026-10-13T09:29:43+00:00",
+ "segundos": 1357,
+ "productos": 515,
+ "comparables": 96,
  "tiendas": {
   "Disfit": {
    "estado": "conservada",
-   "ofertas": 158,
+   "ofertas": 162,
    "paginas": 431,
    "productos_leidos": 431,
    "omitidos": {
-    "no_es_suplemento_o_sin_tamano": 82
+    "no_es_suplemento_o_sin_tamano": 85
    },
    "errores": [],
    "tipo": "sitemap",
    "errores_total": 0,
-   "nota": "leyó 158 ofertas y antes tenía 3876: se conserva la lectura anterior",
+   "nota": "leyó 162 ofertas y antes tenía 3876: se conserva la lectura anterior",
    "enlaces_verificados": {
     "probados": 2,
     "correctos": 2,
@@ -43,12 +43,12 @@
   },
   "Recoleta al Fallo": {
    "estado": "ok",
-   "ofertas": 36,
-   "paginas": 24,
+   "ofertas": 31,
+   "paginas": 118,
    "productos_leidos": 118,
    "omitidos": {
-    "sin_cambios_304": 94,
-    "no_es_suplemento_o_sin_tamano": 8
+    "no_es_suplemento_o_sin_tamano": 34,
+    "sin_stock": 1
    },
    "errores": [],
    "tipo": "sitemap",
@@ -62,12 +62,12 @@
   "Suplementate": {
    "estado": "ok",
    "ofertas": 183,
-   "paginas": 205,
+   "paginas": 204,
    "productos_leidos": 264,
    "omitidos": {
-    "no_es_suplemento_o_sin_tamano": 16,
-    "sin_stock": 20,
-    "sin_cambios_304": 59
+    "no_es_suplemento_o_sin_tamano": 15,
+    "sin_cambios_304": 60,
+    "sin_stock": 26
    },
    "errores": [],
    "tipo": "sitemap",
@@ -80,13 +80,12 @@
   },
   "Nutrición Muscular": {
    "estado": "ok",
-   "ofertas": 84,
-   "paginas": 136,
+   "ofertas": 82,
+   "paginas": 205,
    "productos_leidos": 205,
    "omitidos": {
-    "sin_stock": 12,
-    "sin_cambios_304": 69,
-    "no_es_suplemento_o_sin_tamano": 47
+    "sin_stock": 18,
+    "no_es_suplemento_o_sin_tamano": 67
    },
    "errores": [],
    "tipo": "sitemap",
@@ -149,19 +148,16 @@
   },
   "ADN Nutrition": {
    "estado": "ok",
-   "ofertas": 83,
-   "paginas": 498,
-   "productos_leidos": 498,
+   "ofertas": 84,
+   "paginas": 499,
+   "productos_leidos": 499,
    "omitidos": {
-    "sin_stock": 173,
+    "sin_stock": 172,
     "no_es_suplemento_o_sin_tamano": 23
    },
-   "errores": [
-    "https://www.adnnutrition.com.ar/productos/b-bcaa-8-0-360-grs-fruit-punch/: HTTP 404 en https://www.adnnutrition.com.ar/productos/b-bcaa-8-0-360-grs-fruit-punch/",
-    "https://www.adnnutrition.com.ar/productos/s-bcaa-8-0-360-grs-lemon-punch-i-seta-bcaa-extra-leucina-copia/: HTTP 404 en https://www.adnnutrition.com.ar/productos/s-bcaa-8-0-360-grs-lemon-punch-i-seta-bcaa-extra-leucina-co"
-   ],
+   "errores": [],
    "tipo": "sitemap",
-   "errores_total": 2,
+   "errores_total": 0,
    "enlaces_verificados": {
     "probados": 2,
     "correctos": 1,
@@ -170,11 +166,11 @@
   },
   "Farmacity": {
    "estado": "ok",
-   "ofertas": 107,
+   "ofertas": 108,
    "paginas": 23,
    "productos_leidos": 929,
    "omitidos": {
-    "no_es_suplemento_o_sin_tamano": 569,
+    "no_es_suplemento_o_sin_tamano": 575,
     "sin_stock": 197
    },
    "errores": [],
@@ -198,12 +194,13 @@
   },
   "Entreno": {
    "estado": "ok",
-   "ofertas": 152,
-   "paginas": 395,
+   "ofertas": 153,
+   "paginas": 391,
    "productos_leidos": 395,
    "omitidos": {
-    "sin_stock": 76,
-    "no_es_suplemento_o_sin_tamano": 19
+    "sin_stock": 77,
+    "no_es_suplemento_o_sin_tamano": 19,
+    "sin_cambios_304": 4
    },
    "errores": [],
    "tipo": "sitemap",
@@ -216,11 +213,11 @@
   },
   "TR Fitness": {
    "estado": "ok",
-   "ofertas": 71,
+   "ofertas": 73,
    "paginas": 156,
    "productos_leidos": 156,
    "omitidos": {
-    "no_es_suplemento_o_sin_tamano": 19
+    "no_es_suplemento_o_sin_tamano": 18
    },
    "errores": [],
    "tipo": "sitemap",
@@ -234,11 +231,10 @@
   "3F Suplementos": {
    "estado": "ok",
    "ofertas": 15,
-   "paginas": 54,
+   "paginas": 0,
    "productos_leidos": 54,
    "omitidos": {
-    "sin_stock": 14,
-    "no_es_suplemento_o_sin_tamano": 3
+    "sin_cambios_304": 54
    },
    "errores": [],
    "tipo": "sitemap",
@@ -275,10 +271,10 @@
    "estado": "ok",
    "ofertas": 1,
    "paginas": 17,
-   "productos_leidos": 4038,
+   "productos_leidos": 4037,
    "omitidos": {
-    "no_es_suplemento_o_sin_tamano": 8173,
-    "sin_stock": 7948
+    "sin_stock": 7833,
+    "no_es_suplemento_o_sin_tamano": 8271
    },
    "errores": [],
    "tipo": "shopify",
