@@ -1,21 +1,21 @@
 {
- "fecha": "2026-10-14T09:43:05+00:00",
- "segundos": 1378,
- "productos": 518,
- "comparables": 98,
+ "fecha": "2026-10-15T09:40:50+00:00",
+ "segundos": 1255,
+ "productos": 516,
+ "comparables": 100,
  "tiendas": {
   "Disfit": {
    "estado": "conservada",
-   "ofertas": 155,
-   "paginas": 429,
-   "productos_leidos": 429,
+   "ofertas": 164,
+   "paginas": 436,
+   "productos_leidos": 436,
    "omitidos": {
     "no_es_suplemento_o_sin_tamano": 90
    },
    "errores": [],
    "tipo": "sitemap",
    "errores_total": 0,
-   "nota": "leyó 155 ofertas y antes tenía 3876: se conserva la lectura anterior",
+   "nota": "leyó 164 ofertas y antes tenía 3876: se conserva la lectura anterior",
    "enlaces_verificados": {
     "probados": 2,
     "correctos": 2,
@@ -24,17 +24,17 @@
   },
   "ENA Sport": {
    "estado": "conservada",
-   "ofertas": 54,
+   "ofertas": 55,
    "paginas": 1,
    "productos_leidos": 70,
    "omitidos": {
-    "no_es_suplemento_o_sin_tamano": 125,
-    "sin_stock": 19
+    "no_es_suplemento_o_sin_tamano": 132,
+    "sin_stock": 11
    },
    "errores": [],
    "tipo": "shopify",
    "errores_total": 0,
-   "nota": "leyó 54 ofertas y antes tenía 182: se conserva la lectura anterior",
+   "nota": "leyó 55 ofertas y antes tenía 182: se conserva la lectura anterior",
    "enlaces_verificados": {
     "probados": 2,
     "correctos": 2,
@@ -43,11 +43,11 @@
   },
   "Recoleta al Fallo": {
    "estado": "ok",
-   "ofertas": 24,
-   "paginas": 118,
-   "productos_leidos": 118,
+   "ofertas": 23,
+   "paginas": 119,
+   "productos_leidos": 119,
    "omitidos": {
-    "no_es_suplemento_o_sin_tamano": 25,
+    "no_es_suplemento_o_sin_tamano": 28,
     "sin_stock": 2
    },
    "errores": [],
@@ -55,18 +55,19 @@
    "errores_total": 0,
    "enlaces_verificados": {
     "probados": 2,
-    "correctos": 1,
-    "dudosos": 1
+    "correctos": 2,
+    "dudosos": 0
    }
   },
   "Suplementate": {
    "estado": "ok",
    "ofertas": 182,
-   "paginas": 264,
+   "paginas": 254,
    "productos_leidos": 264,
    "omitidos": {
     "no_es_suplemento_o_sin_tamano": 19,
-    "sin_stock": 35
+    "sin_cambios_304": 10,
+    "sin_stock": 33
    },
    "errores": [],
    "tipo": "sitemap",
@@ -133,8 +134,8 @@
    "paginas": 114,
    "productos_leidos": 114,
    "omitidos": {
-    "no_es_suplemento_o_sin_tamano": 23,
-    "sin_stock": 2
+    "no_es_suplemento_o_sin_tamano": 22,
+    "sin_stock": 3
    },
    "errores": [],
    "tipo": "sitemap",
@@ -148,8 +149,8 @@
   "ADN Nutrition": {
    "estado": "ok",
    "ofertas": 84,
-   "paginas": 499,
-   "productos_leidos": 499,
+   "paginas": 507,
+   "productos_leidos": 507,
    "omitidos": {
     "sin_stock": 173,
     "no_es_suplemento_o_sin_tamano": 23
@@ -165,12 +166,12 @@
   },
   "Farmacity": {
    "estado": "ok",
-   "ofertas": 104,
+   "ofertas": 107,
    "paginas": 23,
    "productos_leidos": 929,
    "omitidos": {
-    "no_es_suplemento_o_sin_tamano": 562,
-    "sin_stock": 195
+    "no_es_suplemento_o_sin_tamano": 578,
+    "sin_stock": 194
    },
    "errores": [],
    "tipo": "vtex",
@@ -193,20 +194,20 @@
   },
   "Entreno": {
    "estado": "ok",
-   "ofertas": 150,
-   "paginas": 396,
-   "productos_leidos": 396,
+   "ofertas": 152,
+   "paginas": 397,
+   "productos_leidos": 397,
    "omitidos": {
-    "sin_stock": 75,
-    "no_es_suplemento_o_sin_tamano": 21
+    "sin_stock": 74,
+    "no_es_suplemento_o_sin_tamano": 20
    },
    "errores": [],
    "tipo": "sitemap",
    "errores_total": 0,
    "enlaces_verificados": {
     "probados": 2,
-    "correctos": 1,
-    "dudosos": 1
+    "correctos": 2,
+    "dudosos": 0
    }
   },
   "TR Fitness": {
@@ -215,7 +216,7 @@
    "paginas": 156,
    "productos_leidos": 156,
    "omitidos": {
-    "no_es_suplemento_o_sin_tamano": 19
+    "no_es_suplemento_o_sin_tamano": 18
    },
    "errores": [],
    "tipo": "sitemap",
@@ -229,10 +230,10 @@
   "3F Suplementos": {
    "estado": "ok",
    "ofertas": 15,
-   "paginas": 27,
+   "paginas": 28,
    "productos_leidos": 54,
    "omitidos": {
-    "sin_cambios_304": 27,
+    "sin_cambios_304": 26,
     "sin_stock": 13,
     "no_es_suplemento_o_sin_tamano": 2
    },
@@ -258,31 +259,26 @@
    "errores_total": 1
   },
   "Central Oeste": {
-   "estado": "ok",
+   "estado": "parcial",
    "ofertas": 0,
-   "paginas": 470,
-   "productos_leidos": 470,
+   "paginas": 4,
+   "productos_leidos": 4,
    "omitidos": {},
    "errores": [
-    "https://www.centraloeste.com.ar/4005900806154-crema-gel-nivea-rose-care-hidratante-x50ml.html: HTTP 404 en https://www.centraloeste.com.ar/4005900806154-crema-gel-nivea-rose-care-hidratante-x50ml.html",
-    "https://www.centraloeste.com.ar/7790740000431-shampoo-plusbelle-esencia-control-frizz-aminomax-x970ml.html: HTTP 404 en https://www.centraloeste.com.ar/7790740000431-shampoo-plusbelle-esencia-control-frizz-aminomax-x970m",
-    "https://www.centraloeste.com.ar/7793742108518-crema-facial-dermaglos-ultra-hidratacion-x50gr.html: HTTP 404 en https://www.centraloeste.com.ar/7793742108518-crema-facial-dermaglos-ultra-hidratacion-x50gr.html",
-    "https://www.centraloeste.com.ar/7793742208508-crema-contorno-de-ojos-dermaglos-ultra-hidratacion-x15gr.html: HTTP 404 en https://www.centraloeste.com.ar/7793742208508-crema-contorno-de-ojos-dermaglos-ultra-hidratacion-x1",
-    "https://www.centraloeste.com.ar/7793742008252-emulsion-dermaglos-corporal-hidratacion-esencial-x300ml.html: HTTP 404 en https://www.centraloeste.com.ar/7793742008252-emulsion-dermaglos-corporal-hidratacion-esencial-x300m",
-    "https://www.centraloeste.com.ar/7792981071188-protein-bar-frut-crema-x46gr.html: HTTP 404 en https://www.centraloeste.com.ar/7792981071188-protein-bar-frut-crema-x46gr.html",
-    "https://www.centraloeste.com.ar/77919304-lulemuu-barra-de-cereal-x12gr-arroz-ba-ada-c-choc-negro.html: HTTP 404 en https://www.centraloeste.com.ar/77919304-lulemuu-barra-de-cereal-x12gr-arroz-ba-ada-c-choc-negro.html"
+    "https://www.centraloeste.com.ar/7798129418082-trip-magnesio-comp-rec-x-30.html: HTTP 503 en https://www.centraloeste.com.ar/7798129418082-trip-magnesio-comp-rec-x-30.html",
+    "bloqueo: www.centraloeste.com.ar: demasiados errores 503 seguidos"
    ],
    "tipo": "sitemap",
-   "errores_total": 7
+   "errores_total": 2
   },
   "Decathlon": {
    "estado": "ok",
    "ofertas": 1,
    "paginas": 17,
-   "productos_leidos": 4035,
+   "productos_leidos": 4037,
    "omitidos": {
-    "no_es_suplemento_o_sin_tamano": 8340,
-    "sin_stock": 7748
+    "sin_stock": 7850,
+    "no_es_suplemento_o_sin_tamano": 8231
    },
    "errores": [],
    "tipo": "shopify",
@@ -295,11 +291,11 @@
   },
   "Nutrishop": {
    "estado": "ok",
-   "ofertas": 47,
+   "ofertas": 50,
    "paginas": 148,
    "productos_leidos": 148,
    "omitidos": {
-    "no_es_suplemento_o_sin_tamano": 22
+    "no_es_suplemento_o_sin_tamano": 24
    },
    "errores": [],
    "tipo": "sitemap",
