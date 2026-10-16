@@ -1,21 +1,21 @@
 {
- "fecha": "2026-10-15T09:40:50+00:00",
- "segundos": 1255,
- "productos": 516,
+ "fecha": "2026-10-16T09:42:40+00:00",
+ "segundos": 1384,
+ "productos": 517,
  "comparables": 100,
  "tiendas": {
   "Disfit": {
    "estado": "conservada",
-   "ofertas": 164,
-   "paginas": 436,
-   "productos_leidos": 436,
+   "ofertas": 139,
+   "paginas": 427,
+   "productos_leidos": 427,
    "omitidos": {
-    "no_es_suplemento_o_sin_tamano": 90
+    "no_es_suplemento_o_sin_tamano": 95
    },
    "errores": [],
    "tipo": "sitemap",
    "errores_total": 0,
-   "nota": "leyó 164 ofertas y antes tenía 3876: se conserva la lectura anterior",
+   "nota": "leyó 139 ofertas y antes tenía 3876: se conserva la lectura anterior",
    "enlaces_verificados": {
     "probados": 2,
     "correctos": 2,
@@ -43,12 +43,12 @@
   },
   "Recoleta al Fallo": {
    "estado": "ok",
-   "ofertas": 23,
+   "ofertas": 26,
    "paginas": 119,
    "productos_leidos": 119,
    "omitidos": {
-    "no_es_suplemento_o_sin_tamano": 28,
-    "sin_stock": 2
+    "no_es_suplemento_o_sin_tamano": 21,
+    "sin_stock": 4
    },
    "errores": [],
    "tipo": "sitemap",
@@ -61,13 +61,12 @@
   },
   "Suplementate": {
    "estado": "ok",
-   "ofertas": 182,
-   "paginas": 254,
-   "productos_leidos": 264,
+   "ofertas": 183,
+   "paginas": 265,
+   "productos_leidos": 265,
    "omitidos": {
-    "no_es_suplemento_o_sin_tamano": 19,
-    "sin_cambios_304": 10,
-    "sin_stock": 33
+    "no_es_suplemento_o_sin_tamano": 18,
+    "sin_stock": 36
    },
    "errores": [],
    "tipo": "sitemap",
@@ -80,7 +79,7 @@
   },
   "Nutrición Muscular": {
    "estado": "ok",
-   "ofertas": 81,
+   "ofertas": 84,
    "paginas": 205,
    "productos_leidos": 205,
    "omitidos": {
@@ -148,11 +147,11 @@
   },
   "ADN Nutrition": {
    "estado": "ok",
-   "ofertas": 84,
-   "paginas": 507,
-   "productos_leidos": 507,
+   "ofertas": 88,
+   "paginas": 509,
+   "productos_leidos": 509,
    "omitidos": {
-    "sin_stock": 173,
+    "sin_stock": 174,
     "no_es_suplemento_o_sin_tamano": 23
    },
    "errores": [],
@@ -166,12 +165,12 @@
   },
   "Farmacity": {
    "estado": "ok",
-   "ofertas": 107,
+   "ofertas": 105,
    "paginas": 23,
-   "productos_leidos": 929,
+   "productos_leidos": 930,
    "omitidos": {
-    "no_es_suplemento_o_sin_tamano": 578,
-    "sin_stock": 194
+    "no_es_suplemento_o_sin_tamano": 566,
+    "sin_stock": 195
    },
    "errores": [],
    "tipo": "vtex",
@@ -194,12 +193,12 @@
   },
   "Entreno": {
    "estado": "ok",
-   "ofertas": 152,
+   "ofertas": 148,
    "paginas": 397,
    "productos_leidos": 397,
    "omitidos": {
-    "sin_stock": 74,
-    "no_es_suplemento_o_sin_tamano": 20
+    "sin_stock": 71,
+    "no_es_suplemento_o_sin_tamano": 22
    },
    "errores": [],
    "tipo": "sitemap",
@@ -212,7 +211,7 @@
   },
   "TR Fitness": {
    "estado": "ok",
-   "ofertas": 71,
+   "ofertas": 73,
    "paginas": 156,
    "productos_leidos": 156,
    "omitidos": {
@@ -230,12 +229,12 @@
   "3F Suplementos": {
    "estado": "ok",
    "ofertas": 15,
-   "paginas": 28,
+   "paginas": 8,
    "productos_leidos": 54,
    "omitidos": {
-    "sin_cambios_304": 26,
-    "sin_stock": 13,
-    "no_es_suplemento_o_sin_tamano": 2
+    "sin_cambios_304": 46,
+    "no_es_suplemento_o_sin_tamano": 1,
+    "sin_stock": 2
    },
    "errores": [],
    "tipo": "sitemap",
@@ -259,17 +258,28 @@
    "errores_total": 1
   },
   "Central Oeste": {
-   "estado": "parcial",
+   "estado": "ok",
    "ofertas": 0,
-   "paginas": 4,
-   "productos_leidos": 4,
+   "paginas": 466,
+   "productos_leidos": 466,
    "omitidos": {},
    "errores": [
-    "https://www.centraloeste.com.ar/7798129418082-trip-magnesio-comp-rec-x-30.html: HTTP 503 en https://www.centraloeste.com.ar/7798129418082-trip-magnesio-comp-rec-x-30.html",
-    "bloqueo: www.centraloeste.com.ar: demasiados errores 503 seguidos"
+    "https://www.centraloeste.com.ar/nutricion-y-deportes/suplementos-deportivos/snack-proteicos.html: HTTP 404 en https://www.centraloeste.com.ar/nutricion-y-deportes/suplementos-deportivos/snack-proteicos.html",
+    "https://www.centraloeste.com.ar/7792981060052-ena-suplemento-deportivo-whey-x-pro-x-1000gr.html: HTTP 404 en https://www.centraloeste.com.ar/7792981060052-ena-suplemento-deportivo-whey-x-pro-x-1000gr.html",
+    "https://www.centraloeste.com.ar/7891150056220-dove-limpiador-facial-x-100-grs-hidratacion-esencial.html: HTTP 404 en https://www.centraloeste.com.ar/7891150056220-dove-limpiador-facial-x-100-grs-hidratacion-esencial.html",
+    "https://www.centraloeste.com.ar/7791001007817-biferdil-bals-x800ml-vitaminado.html: HTTP 404 en https://www.centraloeste.com.ar/7791001007817-biferdil-bals-x800ml-vitaminado.html",
+    "https://www.centraloeste.com.ar/7792981006203-enaccion-colageno-suplemento-deportivo-comcom-move.html: HTTP 404 en https://www.centraloeste.com.ar/7792981006203-enaccion-colageno-suplemento-deportivo-comcom-move.html",
+    "https://www.centraloeste.com.ar/suplemento-dietario-simple-colageno-x28un.html: HTTP 404 en https://www.centraloeste.com.ar/suplemento-dietario-simple-colageno-x28un.html",
+    "https://www.centraloeste.com.ar/7792981006234-enaccion-suplemento-dietario-x30cmp-multivitaminico-plus.html: HTTP 404 en https://www.centraloeste.com.ar/7792981006234-enaccion-suplemento-dietario-x30cmp-multivitaminico-p",
+    "https://www.centraloeste.com.ar/7790740000509-acondicionador-plusbelle-esencia-fuerza-reparadora-aminomax-x970ml.html: HTTP 404 en https://www.centraloeste.com.ar/7790740000509-acondicionador-plusbelle-esencia-fuerza-rep",
+    "https://www.centraloeste.com.ar/6001159129158-emulsion-bio-oil-hidratacion-corporal-x175ml.html: HTTP 404 en https://www.centraloeste.com.ar/6001159129158-emulsion-bio-oil-hidratacion-corporal-x175ml.html",
+    "https://www.centraloeste.com.ar/7792981063077-whey-protein-truemade-unflavored-1-lb-453-g.html: HTTP 404 en https://www.centraloeste.com.ar/7792981063077-whey-protein-truemade-unflavored-1-lb-453-g.html",
+    "https://www.centraloeste.com.ar/7792981068027-zma-c-ps-x-60.html: HTTP 404 en https://www.centraloeste.com.ar/7792981068027-zma-c-ps-x-60.html",
+    "https://www.centraloeste.com.ar/7798111211677-barra-acf-camuflage-kid-by-dadatina-x30gr.html: HTTP 404 en https://www.centraloeste.com.ar/7798111211677-barra-acf-camuflage-kid-by-dadatina-x30gr.html",
+    "https://www.centraloeste.com.ar/7790580138042-raptor-creatina-sabor-naranja-pvo-x-162-g.html: HTTP 404 en https://www.centraloeste.com.ar/7790580138042-raptor-creatina-sabor-naranja-pvo-x-162-g.html"
    ],
    "tipo": "sitemap",
-   "errores_total": 2
+   "errores_total": 13
   },
   "Decathlon": {
    "estado": "ok",
@@ -277,8 +287,8 @@
    "paginas": 17,
    "productos_leidos": 4037,
    "omitidos": {
-    "sin_stock": 7850,
-    "no_es_suplemento_o_sin_tamano": 8231
+    "sin_stock": 8147,
+    "no_es_suplemento_o_sin_tamano": 7934
    },
    "errores": [],
    "tipo": "shopify",
@@ -290,20 +300,21 @@
    }
   },
   "Nutrishop": {
-   "estado": "ok",
-   "ofertas": 50,
-   "paginas": 148,
-   "productos_leidos": 148,
-   "omitidos": {
-    "no_es_suplemento_o_sin_tamano": 24
-   },
-   "errores": [],
+   "estado": "conservada",
+   "ofertas": 0,
+   "paginas": 0,
+   "productos_leidos": 0,
+   "omitidos": {},
+   "errores": [
+    "sitemap https://www.nutrishop.com.ar/sitemap.xml: HTTP 403 en https://www.nutrishop.com.ar/sitemap.xml"
+   ],
    "tipo": "sitemap",
-   "errores_total": 0,
+   "errores_total": 1,
+   "nota": "leyó 0 ofertas y antes tenía 50: se conserva la lectura anterior",
    "enlaces_verificados": {
     "probados": 2,
-    "correctos": 2,
-    "dudosos": 0
+    "correctos": 0,
+    "dudosos": 2
    }
   },
   "Mercado Libre": {
